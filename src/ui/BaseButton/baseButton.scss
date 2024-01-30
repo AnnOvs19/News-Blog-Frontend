@@ -1,0 +1,16 @@
+.baseBtn {
+    border: none;
+    background: #FFD050;
+    color: #11121a;
+    padding: 13px 42px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.4s;
+
+    &:hover {
+        background-color: #592EA9;
+        color: white;
+        transition: 0.4s;
+    }
+}
