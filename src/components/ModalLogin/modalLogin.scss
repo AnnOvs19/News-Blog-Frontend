@@ -26,10 +26,7 @@
             display: flex;
             flex-direction: row;
 
-            &__login {
-                padding: 30px;
-            }
-
+            &__login,
             &__register {
                 padding: 30px;
             }
@@ -48,15 +45,14 @@
 
         .body {
 
-            &__login {
+            &__login,
+            &__register {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
                 gap: 15px
             }
-
-            &__register {}
 
             .modal-btn {
                 width: 100% !important;

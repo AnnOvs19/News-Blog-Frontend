@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import "./modalLogin.scss"
 import BaseInput from '../../ui/BaseInput/BaseInput';
@@ -7,6 +7,8 @@ import BaseButton from '../../ui/BaseButton/BaseButton';
 const ModalLogin = ({ active, setActive }) => {
 
     const [activeTab, setActiveTab] = useState(0);
+
+
 
     return (
         <div className={active ? "modalLogin activeModal" : "modalLogin"} onClick={() => setActive(false)}>
@@ -19,21 +21,26 @@ const ModalLogin = ({ active, setActive }) => {
                         <h3 className={activeTab == 1 ? 'base-title activeTab' : 'base-title'}>New account</h3>
                     </div>
                 </div>
-                <div className='body'>
+                <form className='body'>
                     {
                         activeTab == 0 ? (
                             <div className='body__login'>
-                                <BaseInput name={"email"} type={"email"} placeholder={"e-mail"} />
-                                <BaseInput name={"password"} type={"password"} placeholder={"password"} />
-                                <BaseButton styles={"modal-btn"}>Sign in</BaseButton>
+                                <BaseInput name={"email"} type={"email"} placeholder={"E-mail"} />
+                                <BaseInput name={"password"} type={"password"} placeholder={"Password"} />
+                                <BaseButton styles={"modal-btn"}>Log in</BaseButton>
                             </div>
                         ) : (
-                            <div className='body__register'></div>
+                            <div className='body__register'>
+                                <BaseInput name={"name"} type={"text"} placeholder={"Name"} />
+                                <BaseInput name={"email"} type={"email"} placeholder={"E-mail"} />
+                                <BaseInput name={"password"} type={"password"} placeholder={"Password"} />
+                                <BaseButton styles={"modal-btn"}>Register</BaseButton>
+                            </div>
                         )
                     }
 
 
-                </div>
+                </form>
             </div>
         </div>
     );
