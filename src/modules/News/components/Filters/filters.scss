@@ -1,0 +1,50 @@
+.filters {
+    margin-top: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #F4F0F8;
+    padding: 25px 0 25px 0;
+
+    &-box {
+        max-width: 1200px;
+        width: 1200px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 20px;
+
+        &__search {
+            display: flex;
+            flex-direction: row;
+
+            &-input {
+                width: 480px;
+                height: 24px;
+                padding: 10px 20px;
+
+                background-color: rgba(255, 255, 255, 0.56);
+                border: 1px solid #232536;
+
+                input {
+                    &::placeholder {
+                        color: #232536;
+                    }
+                }
+
+
+
+            }
+
+            &-button {
+                background-color: #232536;
+                color: white;
+                padding: 12px 42px;
+
+                &:hover {
+                    background-color: #2b1652;
+                }
+            }
+        }
+    }
+}
