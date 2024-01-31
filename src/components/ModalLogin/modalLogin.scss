@@ -28,7 +28,7 @@
 
             &__login,
             &__register {
-                padding: 30px;
+                margin: 30px;
             }
 
             h3 {
@@ -51,15 +51,37 @@
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
-                gap: 15px
+                // gap: 15px;
+
+                div {
+                    margin-top: 15px;
+                }
+
+                .error-span {
+                    margin-top: 5px;
+                    color: rgb(255, 42, 42);
+                    font-size: 11px;
+                }
             }
 
             .modal-btn {
                 width: 100% !important;
-                margin-top: 20px;
+                margin-top: 30px;
+
+
             }
         }
 
+    }
+}
+
+.disable {
+    background-color: #ffd050b5;
+    color: #11121acb;
+
+    &:hover {
+        background-color: #ffd050b5;
+        color: #11121acb;
     }
 }
 

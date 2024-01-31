@@ -3,14 +3,16 @@ import React, { useEffect, useState } from 'react';
 import "./modalLogin.scss"
 import BaseInput from '../../ui/BaseInput/BaseInput';
 import BaseButton from '../../ui/BaseButton/BaseButton';
+import Login from './Login/Login';
+import Register from './Register/Register';
 
 const ModalLogin = ({ active, setActive }) => {
 
     const [activeTab, setActiveTab] = useState(0);
 
 
-
     return (
+        //Следующая запись для скрытия модалки по нажатию на фон
         <div className={active ? "modalLogin activeModal" : "modalLogin"} onClick={() => setActive(false)}>
             <div className='modalLogin-content' onClick={(e) => e.stopPropagation()}>
                 <div className='head'>
@@ -24,25 +26,16 @@ const ModalLogin = ({ active, setActive }) => {
                 <form className='body'>
                     {
                         activeTab == 0 ? (
-                            <div className='body__login'>
-                                <BaseInput name={"email"} type={"email"} placeholder={"E-mail"} />
-                                <BaseInput name={"password"} type={"password"} placeholder={"Password"} />
-                                <BaseButton styles={"modal-btn"}>Log in</BaseButton>
-                            </div>
+                            <Login />
                         ) : (
-                            <div className='body__register'>
-                                <BaseInput name={"name"} type={"text"} placeholder={"Name"} />
-                                <BaseInput name={"email"} type={"email"} placeholder={"E-mail"} />
-                                <BaseInput name={"password"} type={"password"} placeholder={"Password"} />
-                                <BaseButton styles={"modal-btn"}>Register</BaseButton>
-                            </div>
+                            <Register />
                         )
                     }
 
 
                 </form>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 

@@ -16,4 +16,10 @@
 
 .invalid {
     border: 1px solid rgb(255, 42, 42);
+
+    input {
+        &::placeholder {
+            color: rgba(165, 28, 28, 0.815);
+        }
+    }
 }
