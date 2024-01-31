@@ -1,0 +1,25 @@
+.baseInput {
+    border: 1px solid #4C4C4C;
+    display: flex;
+    align-items: center;
+    width: 340px;
+    height: 28px;
+    padding: 14px 25px;
+
+    input {
+        border: none;
+        width: 100%;
+        background-color: transparent;
+        outline: none;
+    }
+}
+
+.invalid {
+    border: 1px solid rgb(255, 42, 42);
+
+    input {
+        &::placeholder {
+            color: rgba(165, 28, 28, 0.815);
+        }
+    }
+}

@@ -1,0 +1,22 @@
+.base {
+    &-title {
+        font-size: normal;
+        font-weight: 700;
+        color: #11121a;
+        line-height: 35px;
+    }
+
+    &-subtitle {
+        font-size: normal;
+        font-weight: 500;
+        color: #592EA9;
+        line-height: 20px;
+    }
+
+    &-text {
+        font-size: normal;
+        font-weight: 400;
+        color: #6D6E76;
+        line-height: 28px;
+    }
+}

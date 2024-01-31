@@ -1,0 +1,34 @@
+.modalNotice {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 0 20px 25px 0;
+    opacity: 0;
+
+    &-content {
+        padding: 10px;
+        width: 300px;
+        height: 60px;
+        background-color: rgb(249, 249, 249);
+        border: 1px solid #F4F0F8;
+        z-index: 110;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        box-shadow: 7px 9px 10px -1px rgba(35, 37, 54, 0.39);
+
+        img {
+            margin-left: 10px;
+            margin-right: 15px;
+            height: 40px;
+        }
+    }
+}
+
+.activeModal {
+    opacity: 1;
+    pointer-events: all;
+}
