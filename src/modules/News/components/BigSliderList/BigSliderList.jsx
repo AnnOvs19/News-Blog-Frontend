@@ -27,7 +27,7 @@ const BigSliderList = ({ newsData }) => {
             <div className='bigSliderList__array' style={{
                 transform: `translateX(${offset}px)`,
             }}>
-                {pages?.map((news, index) => {
+                {pages?.map((news) => {
                     return (
                         <BigSliderItem newsData={news} />
                     )
