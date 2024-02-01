@@ -1,0 +1,19 @@
+.bigSliderList {
+
+    margin: 0 auto;
+    margin-top: 150px;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    &__array {
+        display: flex;
+        transition: translate;
+        transition-property: transform;
+        transition-duration: 1000ms;
+        transition-timing-function: ease-in-out;
+
+
+    }
+}

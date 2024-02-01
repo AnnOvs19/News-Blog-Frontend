@@ -1,0 +1,57 @@
+.bigSlider-item {
+    margin: 0 auto;
+    min-width: 1050px;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(270deg, rgba(33, 21, 56, 1) 0%, rgba(35, 37, 54, 1) 76%);
+    padding: 75px;
+    gap: 25px;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        h1 {
+            color: white;
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 44px;
+            margin-bottom: 8px;
+        }
+
+        div {
+            margin-bottom: 3px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 5px;
+
+            span {
+                font-size: 15px;
+                color: white;
+            }
+
+            h5 {
+                font-size: 15px;
+                color: #FFD050;
+            }
+        }
+
+
+        p {
+            margin-bottom: 40px;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 28px;
+            color: white;
+        }
+
+
+    }
+
+    img {
+        height: 356px;
+    }
+}
