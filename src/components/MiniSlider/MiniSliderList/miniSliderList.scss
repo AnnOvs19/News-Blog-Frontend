@@ -1,3 +1,44 @@
 .miniSliderList {
-    &__array {}
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 1200px;
+    width: 1200px;
+
+    &-box {
+        margin: 0 auto;
+        margin-top: 100px;
+        max-width: 1200px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        overflow: hidden;
+
+        &__array {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            transition: translate;
+            transition-property: transform;
+            transition-duration: 1000ms;
+            transition-timing-function: ease-in-out;
+        }
+    }
+}
+
+.slider-arrow {
+    position: absolute;
+    width: 50px;
+
+    &:first-child {
+        top: 250px;
+        left: -90px;
+    }
+
+    &:last-child {
+        top: 250px;
+        right: -90px;
+    }
 }

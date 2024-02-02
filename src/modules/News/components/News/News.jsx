@@ -5,19 +5,24 @@ import NewsList from '../NewsList/NewsList';
 import ModalNotice from '../../../../components/ModalNotice/ModalNotice';
 import { newsArray } from '../../store/newsArray';
 import BigSliderList from '../BigSliderList/BigSliderList';
+import MiniSliderList from '../../../../components/MiniSlider/MiniSliderList/MiniSliderList';
 
 import "./news.scss"
 
 
+
 const News = (props) => {
 
-    const arrBigSlider = newsArray.filter((item, index) => item.id % 2 == 0 && index < 10)
+    const arrBigSlider = newsArray.filter((item, index) => item.id % 2 == 0 && index < 10);
+    const arrMiniSlider = newsArray.filter((item, index) => item.id % 2 != 0 && index < 12);
+
 
     return (
         <div>
             <BigSliderList newsData={arrBigSlider} />
             <Filters />
             <NewsList />
+            <MiniSliderList newsData={arrMiniSlider} />
         </div>
     );
 };
