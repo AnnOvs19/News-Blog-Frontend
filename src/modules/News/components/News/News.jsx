@@ -12,9 +12,9 @@ import "./news.scss"
 
 
 const News = (props) => {
-
+    //С помощью редакса или бэка сделать фильтрацию новостей в слайдерах
     const arrBigSlider = newsArray.filter((item, index) => item.id % 2 == 0 && index < 10);
-    const arrMiniSlider = newsArray.filter((item, index) => item.id % 2 != 0 && index < 12);
+    const arrMiniSlider = newsArray.filter((item, index) => index < 9);
 
 
     return (

@@ -18,12 +18,8 @@ const MiniSliderList = ({ newsData }) => {
 
     function handleRightArrow() {
         const newOffset = offset - 310;
-        const maxOffset = -(310 * (pages.length - 1));
+        const maxOffset = -(310 * 5);
         setOffset(Math.max(newOffset, maxOffset));
-
-        if (newOffset < maxOffset) {
-            setOffset(0)
-        }
     }
 
     return (
