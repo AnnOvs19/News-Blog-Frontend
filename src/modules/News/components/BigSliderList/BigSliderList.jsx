@@ -7,18 +7,19 @@ import "./bigSliderList.scss"
 const BigSliderList = ({ newsData }) => {
     const [pages, setPages] = useState(newsData);
     const [offset, setOffset] = useState(0)
-
+    let newOffset = 0;
+    let maxOffset = 0;
 
     function scrollRight() {
-        const newOffset = offset - 1200;
-        const maxOffset = -(1200 * (pages.length - 1));
+        newOffset = offset - 1200;
+        maxOffset = -(1200 * (pages.length - 1));
         setOffset(Math.max(newOffset, maxOffset));
         if (newOffset < maxOffset) {
             setOffset(0)
         }
     }
 
-    setInterval(() => {
+    setTimeout(() => {
         scrollRight()
     }, 7000);
 
