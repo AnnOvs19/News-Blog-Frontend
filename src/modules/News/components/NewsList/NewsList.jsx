@@ -3,7 +3,7 @@ import React from 'react';
 
 import "./newsList.scss"
 import { newsArray } from '../../store/newsArray';
-import NewsItem from '../../../../components/NewsItem/NewsItem';
+import NewsItem from '../NewsItem/NewsItem';
 
 const NewsList = (props) => {
     return (
