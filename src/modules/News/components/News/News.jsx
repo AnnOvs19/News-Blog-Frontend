@@ -8,6 +8,8 @@ import BigSliderList from '../BigSliderList/BigSliderList';
 import MiniSliderList from '../../../../components/MiniSlider/MiniSliderList/MiniSliderList';
 
 import "./news.scss"
+import BaseButton from '../../../../ui/BaseButton/BaseButton';
+import { Link } from 'react-router-dom';
 
 
 
@@ -23,6 +25,8 @@ const News = (props) => {
             <Filters />
             <NewsList />
             <MiniSliderList newsData={arrMiniSlider} />
+            <Link to={"/profile"}><BaseButton>Перейти в профиль</BaseButton></Link>
+
         </div>
     );
 };
