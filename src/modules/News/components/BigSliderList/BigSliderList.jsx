@@ -1,41 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import BigSliderItem from '../BigSliderItem/BigSliderItem';
 
-
 import "./bigSliderList.scss"
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import 'swiper/css';
 
 const BigSliderList = ({ newsData }) => {
     const [pages, setPages] = useState(newsData);
-    const [offset, setOffset] = useState(0)
-    let newOffset = 0;
-    let maxOffset = 0;
-
-    function scrollRight() {
-        newOffset = offset - 1200;
-        maxOffset = -(1200 * (pages.length - 1));
-        setOffset(Math.max(newOffset, maxOffset));
-        if (newOffset < maxOffset) {
-            setOffset(0)
-        }
-    }
-
-    setTimeout(() => {
-        scrollRight()
-    }, 7000);
 
     return (
         <div className='bigSliderList'>
-            <div className='bigSliderList__array' style={{
-                transform: `translateX(${offset}px)`,
-            }}>
+            <Swiper autoplay={{
+                delay: 6500,
+                disableOnInteraction: false,
+            }} modules={[Autoplay]} loop={true} speed={1500}>
+
                 {pages?.map((news) => {
                     return (
-                        <BigSliderItem newsData={news} />
+                        <SwiperSlide>
+                            <BigSliderItem newsData={news} />
+                        </SwiperSlide>
                     )
                 })}
-            </div>
+
+            </Swiper>
 
         </div>
+
     );
 };
 

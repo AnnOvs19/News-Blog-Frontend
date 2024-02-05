@@ -13,8 +13,11 @@ const Filters = (props) => {
                     <BaseInput styles={"filters-box__search-input"} placeholder="Enter your query in the search bar" type={"text"} name={"search"} />
                     <BaseButton styles={"filters-box__search-button"}>Search</BaseButton>
                 </div>
-                <Dropdown type={0} text={"Sorting by date"} />
-                <Dropdown type={1} text={"Sorting by tags"} />
+                <div className='filters-box__dropdown'>
+                    <Dropdown type={0} text={"Sorting by date"} />
+                    <Dropdown type={1} text={"Sorting by tags"} />
+                </div>
+
             </div>
         </div>
     );

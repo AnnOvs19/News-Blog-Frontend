@@ -1,6 +1,7 @@
 .miniSliderList {
     position: relative;
     margin: 0 auto;
+    margin-top: 100px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -9,36 +10,50 @@
 
     &-box {
         margin: 0 auto;
-        margin-top: 100px;
         max-width: 1200px;
         display: flex;
         flex-direction: row;
         align-items: center;
         overflow: hidden;
 
-        &__array {
-            display: flex;
-            flex-direction: row;
-            gap: 40px;
-            transition: translate;
-            transition-property: transform;
-            transition-duration: 1000ms;
-            transition-timing-function: ease-in-out;
-        }
+    }
+
+
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    width: 38px !important;
+    height: 38px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:after {
+        font-size: 24px !important;
+        color: #232536d3;
+
+    }
+
+    &:hover {
+
+        transition: 0.5s;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.596);
     }
 }
 
-.slider-arrow {
-    position: absolute;
-    width: 50px;
+// .slider-arrow {
+//     position: absolute;
+//     width: 50px;
 
-    &:first-child {
-        top: 250px;
-        left: -90px;
-    }
+//     &:first-child {
+//         top: 250px;
+//         left: -90px;
+//     }
 
-    &:last-child {
-        top: 250px;
-        right: -90px;
-    }
-}
+//     &:last-child {
+//         top: 250px;
+//         right: -90px;
+//     }
+// }

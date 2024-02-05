@@ -2,8 +2,8 @@ import React from 'react';
 
 import "./profileUserItem.scss";
 import BaseButton from '../../../../ui/BaseButton/BaseButton';
-import MockUser from "../../../../assets/images/mockUser.png";
 import Like from "../../../../assets/icons/Like.svg";
+import { user } from '../../store/mockUser';
 
 const ProfileUserItem = ({ newsData }) => {
     return (
@@ -12,7 +12,7 @@ const ProfileUserItem = ({ newsData }) => {
             <div className='profileUserItem__content'>
                 <div className="profileUserItem__content-head">
                     <div className='head-user'>
-                        <img className='img-user' src={MockUser} alt="#" />
+                        <img className='img-user' src={user.avatar} alt="#" />
                         <div className='head-user__title'>
                             <h5 className='base-subtitle'>{newsData.autor}</h5>
                             <span className='base-subtitle' > {newsData.date}</span>
@@ -27,7 +27,7 @@ const ProfileUserItem = ({ newsData }) => {
 
                 </div>
                 <h3 className='base-title'>{newsData.title}</h3>
-                <p className='base-text'>{newsData.content.substring(0, 300)}...</p>
+                <p className='base-text'>{newsData.content.substring(0, 230)}...</p>
             </div>
             <img className='img-news' src={newsData.img} alt="#" />
             <div className='profileUserItem__buttons'>

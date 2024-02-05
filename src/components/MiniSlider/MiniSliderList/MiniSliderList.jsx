@@ -4,40 +4,47 @@ import MiniSliderItem from '../MiniSliderItem/MiniSliderItem';
 import sliderArrowRight from "../../../assets/icons/sliderArrowRight.svg"
 import sliderArrowLeft from "../../../assets/icons/sliderArrowLeft.svg"
 import "./miniSliderList.scss"
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css/navigation';
+import 'swiper/css';
 
 
 const MiniSliderList = ({ newsData }) => {
     const [pages, setPages] = useState(newsData);
-    const [offset, setOffset] = useState(0)
-
-    function handleLeftArrow() {
-        const newOffset = offset + 310;
-        setOffset(Math.min(newOffset, 0));
-
-    }
-
-    function handleRightArrow() {
-        const newOffset = offset - 310;
-        const maxOffset = -(310 * 5);
-        setOffset(Math.max(newOffset, maxOffset));
-    }
 
     return (
         <div className='miniSliderList'>
-            <img className='slider-arrow' src={sliderArrowLeft} alt="#" onClick={handleLeftArrow} />
             <div className='miniSliderList-box'>
-                <div className="miniSliderList-box__array" style={{
-                    transform: `translateX(${offset}px)`,
-                }}>
+                <Swiper navigation={true}
+                    modules={[Navigation]}
+                    slidesPerView={1}
+                    spaceBetween={5}
+                    breakpoints={{
+                        640: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        768: {
+                            slidesPerView: 4,
+                            spaceBetween: 40,
+                        },
+                        1024: {
+                            slidesPerView: 4,
+                            spaceBetween: 30,
+                        },
+                    }}>
                     {pages?.map((news) => {
                         return (
-                            <MiniSliderItem newsData={news} />
+                            <SwiperSlide>
+                                <MiniSliderItem newsData={news} />
+                            </SwiperSlide>
+
                         )
                     })}
 
-                </div>
+                </Swiper>
             </div>
-            <img className='slider-arrow' src={sliderArrowRight} alt="#" onClick={handleRightArrow} />
         </div>
     );
 };

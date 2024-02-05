@@ -40,18 +40,18 @@
         }
 
         span {
-            font-size: 19px;
+            font-size: 17px;
             color: #6D6E76;
         }
 
         h5 {
-            font-size: 22px;
+            font-size: 20px;
 
         }
 
         h3 {
             font-size: 40px;
-            line-height: 55px;
+            line-height: 52px;
             margin-bottom: 12px;
         }
 
@@ -96,7 +96,7 @@
 
 .img {
     &-user {
-        max-width: 65px;
+        max-width: 55px;
     }
 
     &-news {
@@ -105,5 +105,202 @@
 
     &-like {
         max-width: 35px;
+    }
+}
+
+@media (max-width: 1250px) {
+    .profileUserItem {
+        padding: 50px;
+
+        &__content {
+            &-head {
+                margin-bottom: 22px;
+            }
+
+            span {
+                font-size: 15px;
+            }
+
+            h5 {
+                font-size: 18px;
+
+            }
+
+            h3 {
+                font-size: 38px;
+                line-height: 50px;
+                margin-bottom: 12px;
+            }
+
+        }
+    }
+
+    .img {
+        &-news {
+            max-width: 600px;
+        }
+
+        &-like {
+            max-width: 30px;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .profileUserItem {
+        padding: 40px;
+
+        &__content {
+            &-head {
+                margin-bottom: 15px;
+
+                .head {
+                    &-user {
+                        &__title {
+                            gap: 0px;
+                        }
+                    }
+                }
+            }
+
+            span {
+                font-size: 13px;
+            }
+
+            h5 {
+                font-size: 14px;
+
+            }
+
+            h3 {
+                font-size: 29px;
+                line-height: 40px;
+            }
+
+            p {
+
+                font-size: 13px;
+                line-height: 26px;
+            }
+        }
+
+    }
+
+    .img {
+        &-user {
+            max-width: 45px;
+        }
+
+        &-news {
+            max-width: 410px;
+        }
+
+        &-like {
+            max-width: 20px;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .profileUserItem {
+        padding: 20px;
+
+        &__content {
+            &-head {
+                margin-bottom: 14px;
+            }
+
+            span {
+                font-size: 12px;
+            }
+
+            h5 {
+                font-size: 12px;
+
+            }
+
+            h3 {
+                font-size: 22px;
+                line-height: 32px;
+            }
+
+            p {
+
+                font-size: 12px;
+                line-height: 24px;
+            }
+        }
+
+        &__buttons {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+    }
+
+    .img {
+        &-user {
+            max-width: 40px;
+        }
+
+        &-news {
+            max-width: 300px;
+        }
+
+    }
+}
+
+@media (max-width: 320px) {
+    .profileUserItem {
+        padding: 10px;
+        gap: 18px;
+
+        &__content {
+            &-head {
+                margin-bottom: 12px;
+
+                .head {
+                    &-user {
+                        display: flex;
+                        gap: 10px;
+                    }
+                }
+
+            }
+
+            span {
+                font-size: 11px;
+            }
+
+            h5 {
+                font-size: 12px;
+
+            }
+
+            h3 {
+                font-size: 18px;
+                line-height: 26px;
+                margin-bottom: 8px;
+            }
+
+            p {
+
+                font-size: 11px;
+                line-height: 22px;
+            }
+        }
+    }
+
+    .img {
+        &-user {
+            max-width: 35px;
+        }
+
+        &-news {
+            max-width: 245px;
+        }
+
+        &-like {
+            max-width: 18px;
+        }
     }
 }

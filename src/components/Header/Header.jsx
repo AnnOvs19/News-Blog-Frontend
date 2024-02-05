@@ -11,12 +11,22 @@ import ModalLogin from '../ModalLogin/ModalLogin';
 
 const Header = (props) => {
     const [modalActive, setModalActive] = useState(false);
+    const [menuStatus, setMenuStatus] = useState(false);
+
+    function toggleMenu() {
+        if (menuStatus == false) {
+            setMenuStatus(true)
+        } else {
+            setMenuStatus(false)
+        }
+
+    }
 
     return (
         <header className='header'>
             <div className='header-box'>
                 <Link to={"/"}><img src={headerLogo} alt="#" /></Link>
-                <nav className='header-box__nav'>
+                <nav className={menuStatus ? "header-box__nav showMenu" : "header-box__nav"}>
                     <ul>
                         <li> <Link to={"/"}>Home</Link></li>
                         <li>About Us</li>
@@ -26,7 +36,7 @@ const Header = (props) => {
                     <BaseButton styles={"header-box__nav-btn"} onClick={() => setModalActive(true)}>Log in</BaseButton>
                     <ModalLogin active={modalActive} setActive={setModalActive} />
                 </nav>
-
+                <button className={menuStatus ? "burger active" : "burger"} onClick={toggleMenu}></button>
             </div>
         </header>
     );

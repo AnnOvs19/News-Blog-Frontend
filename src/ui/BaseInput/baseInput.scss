@@ -23,3 +23,31 @@
         }
     }
 }
+
+@media (max-width: 1250px) {}
+
+@media (max-width: 800px) {}
+
+@media (max-width: 500px) {
+    .baseInput {
+        width: 231px;
+        height: 24px;
+        padding: 12px 22px;
+
+        &::placeholder {
+            font-size: 10px;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .baseInput {
+        width: 191px;
+        height: 24px;
+        padding: 8px 20px;
+
+        &::placeholder {
+            font-size: 10px;
+        }
+    }
+}
