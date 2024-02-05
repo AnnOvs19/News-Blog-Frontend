@@ -11,5 +11,71 @@
         display: flex;
         flex-direction: column;
         gap: 30px;
+
+        h1 {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+@media (max-width: 1250px) {
+    .profileUserList {
+        max-width: 700px;
+        width: 700px;
+
+        &__array {
+            h1 {
+                font-size: 39px;
+                margin-bottom: 18px;
+            }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .profileUserList {
+        margin-top: 30px;
+        max-width: 490px;
+        width: 490px;
+
+        &__array {
+            gap: 20px;
+
+            h1 {
+                font-size: 31px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .profileUserList {
+        margin-top: 25px;
+        max-width: 340px;
+        width: 340px;
+
+        &__array {
+            h1 {
+                font-size: 26px;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .profileUserList {
+        margin-top: 20px;
+        max-width: 265px;
+        width: 265px;
+
+        &__array {
+            h1 {
+                font-size: 22px;
+                margin-bottom: 0px;
+            }
+        }
     }
 }

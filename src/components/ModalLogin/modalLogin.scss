@@ -93,3 +93,94 @@
     opacity: 1;
     pointer-events: all;
 }
+
+@media (max-width: 1250px) {
+    .modalLogin {
+        &-content {
+            padding: 10px 30px 40px 30px;
+            width: 50%;
+        }
+    }
+
+}
+
+@media (max-width: 800px) {
+    .modalLogin {
+        &-content {
+            padding: 10px 30px 40px 30px;
+            width: 430px;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .modalLogin {
+        &-content {
+            padding: 10px 20px 40px 20px;
+            width: 280px;
+
+
+            .head {
+
+                &__login,
+                &__register {
+                    margin: 20px;
+                }
+
+                h3 {
+                    font-size: 20px;
+                }
+            }
+
+            .body {
+
+                &__login,
+                &__register {
+                    div {
+                        margin-top: 12px;
+                    }
+
+                    .error-span {
+                        margin-top: 5px;
+
+                        font-size: 11px;
+                    }
+                }
+
+                .modal-btn {
+                    width: 100% !important;
+                    margin-top: 25px;
+                    font-size: 15px;
+                    padding: 12px 22px;
+
+
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .modalLogin {
+        &-content {
+            padding: 10px 30px 40px 30px;
+            width: 255px;
+
+
+            .head {
+                margin-bottom: 8px;
+                display: flex;
+                gap: 8px;
+
+                &__login,
+                &__register {
+                    margin: 5px;
+                }
+
+                h3 {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}

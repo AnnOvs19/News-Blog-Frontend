@@ -8,6 +8,7 @@ const ProfileUserList = (props) => {
     return (
         <div className='profileUserList'>
             <div className='profileUserList__array'>
+                <h1 className='base-tile'>My posts</h1>
                 {newsArray?.map((news) => {
                     return (
                         <ProfileUserItem newsData={news} />

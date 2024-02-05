@@ -20,12 +20,64 @@
                 font-style: normal;
                 font-weight: 400;
                 line-height: 24px;
+                cursor: pointer;
+                transition: 0.4s;
             }
         }
 
         &__network {
             display: flex;
             gap: 10px;
+            cursor: pointer;
+            transition: 0.4s;
         }
     }
 }
+
+@media (max-width: 1250px) {
+    .footer {
+        &-box {
+            max-width: 700px;
+            width: 700px;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .footer {
+        &-box {
+            max-width: 490px;
+            width: 490px;
+
+            &__contacts {
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .footer {
+        &-box {
+            max-width: 340px;
+            width: 340px;
+            flex-direction: column;
+            gap: 10px;
+
+            &__contacts {
+                text-align: center;
+
+                p {
+                    font-size: 11px;
+                    line-height: 18px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 380px) {}
+
+@media (max-width: 320px) {}

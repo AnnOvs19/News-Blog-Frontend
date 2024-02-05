@@ -89,3 +89,44 @@
     transition: 0.4s;
     transform: rotate(180deg);
 }
+
+@media (max-width: 1250px) {
+    .dropdown {
+        width: 327px;
+        height: 26px;
+    }
+}
+
+@media (max-width: 800px) {
+    .dropdown {
+        width: 223px;
+        height: 26px;
+    }
+}
+
+@media (max-width: 500px) {
+    .dropdown {
+        width: 327px;
+        height: 26px;
+
+        &-head {
+            .head-text {
+                font-size: 12px;
+            }
+
+            img {
+                max-height: 23px;
+            }
+        }
+    }
+}
+
+@media (max-width: 380px) {}
+
+@media (max-width: 320px) {
+    .dropdown {
+        width: 250px;
+        height: 26px;
+        padding: 8px 10px 8px 0;
+    }
+}

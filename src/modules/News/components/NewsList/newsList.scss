@@ -14,3 +14,43 @@
         gap: 30px;
     }
 }
+
+@media (max-width: 1250px) {
+    .newsList {
+        max-width: 700px;
+        width: 700px;
+
+        &__array {
+            gap: 40px;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .newsList {
+        max-width: 490px;
+        width: 490px;
+
+        &__array {
+            gap: 50px;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .newsList {
+        max-width: 340px;
+        width: 340px;
+
+        &__array {
+            gap: 20px;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .newsList {
+        max-width: 265px;
+        width: 265px;
+    }
+}

@@ -12,7 +12,7 @@
     }
 
     img {
-        max-height: 220px;
+        max-width: 340px;
 
     }
 
@@ -43,6 +43,118 @@
 
         p {
             font-size: 14px;
+
+        }
+    }
+}
+
+@media (max-width: 1250px) {
+    .newsItem {
+        align-items: center;
+        gap: 20px;
+        padding: 10px;
+        transition: 0.4s;
+
+        img {
+            max-width: 355px;
+        }
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 4px;
+
+            h5 {
+                font-size: 12px;
+                line-height: 26px;
+            }
+
+            span {
+                font-size: 11px;
+                line-height: 26px;
+            }
+
+            p {
+                font-size: 12px;
+            }
+
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .newsItem {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        border: 1px solid rgba(109, 110, 118, 0.275);
+        gap: 30px;
+
+        img {
+            max-width: 460px;
+
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .newsItem {
+        padding: 10px;
+        gap: 15px;
+
+        img {
+            max-width: 320px;
+        }
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 8px;
+
+            div {
+                gap: 4px;
+            }
+
+            span {
+                font-size: 11px;
+                line-height: 18px;
+            }
+
+            h5 {
+                font-size: 11px;
+                line-height: 18px;
+            }
+
+            h3 {
+                font-size: 20px;
+                line-height: 25px;
+            }
+
+            p {
+                font-size: 11px;
+                line-height: 22px;
+
+            }
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .newsItem {
+        padding: 7px 7px 10px 7px;
+        gap: 12px;
+
+        img {
+            max-width: 251px;
+        }
+
+        &__content {
+            h3 {
+                font-size: 18px;
+                line-height: 25px;
+            }
         }
     }
 }

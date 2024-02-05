@@ -13,7 +13,7 @@ const ProfileUser = (props) => {
         <div>
             <ProfileUserHead />
             <ProfileUserList />
-            <MiniSliderList newsData={arrMiniSlider} />
+            {/* <MiniSliderList newsData={arrMiniSlider} /> */}
         </div>
     );
 };

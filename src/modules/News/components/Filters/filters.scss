@@ -1,5 +1,5 @@
 .filters {
-    margin-top: 90px;
+    margin-top: 120px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -17,12 +17,13 @@
         &__search {
             display: flex;
             flex-direction: row;
+            cursor: pointer;
+            transition: 0.4s;
 
             &-input {
                 width: 480px;
                 height: 24px;
                 padding: 10px 20px;
-
                 background-color: rgba(255, 255, 255, 0.56);
                 border: 1px solid #23253647;
 
@@ -32,9 +33,6 @@
                         color: #232536;
                     }
                 }
-
-
-
             }
 
             &-button {
@@ -45,6 +43,107 @@
                 &:hover {
                     background-color: #2b1652;
                 }
+            }
+        }
+
+        &__dropdown {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+    }
+}
+
+@media (max-width: 1250px) {
+    .filters {
+        &-box {
+            max-width: 700px;
+            width: 700px;
+            flex-direction: column;
+
+            &__search {
+                &-input {
+                    width: 531px;
+                    height: 24px;
+                    padding: 10px 10px;
+                }
+            }
+        }
+
+
+    }
+}
+
+@media (max-width: 800px) {
+    .filters {
+        &-box {
+            max-width: 490px;
+            width: 490px;
+
+            &__search {
+                &-input {
+                    width: 311px;
+                    height: 24px;
+                    padding: 10px 20px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .filters {
+        &-box {
+            max-width: 340px;
+            width: 340px;
+
+            &__search {
+                &-input {
+                    width: 205px;
+                    height: 24px;
+                    padding: 10px 14px;
+
+                    input {
+                        &::placeholder {
+                            font-size: 12px;
+                        }
+                    }
+                }
+
+                &-button {
+                    padding: 12px 28px;
+                }
+            }
+
+            &__dropdown {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .filters {
+        &-box {
+            max-width: 265px;
+            width: 265px;
+
+            &__search {
+                &-input {
+                    width: 158px;
+                    height: 24px;
+                    padding: 9px 10px;
+                }
+
+                &-button {
+                    padding: 12px 20px;
+                }
+            }
+
+            &__dropdown {
+                gap: 15px;
             }
         }
     }

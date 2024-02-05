@@ -1,11 +1,31 @@
 import React from 'react';
 
+
+import headProfileEdite from "../../../../assets/icons/headProfileEdite.svg"
 import "./profileUserHead.scss";
+import { user } from '../../store/mockUser';
 
 const ProfileUserHead = (props) => {
+
     return (
-        <div>
-            <h1>Hello World from MyComponent</h1>
+        <div className='profileUserHead'>
+            <div className='profileUserHead-box' >
+                <img className='img-avatar' src={user.avatar} alt="#" />
+                <div className='profileUserHead-box__content' >
+                    <div>
+                        <h2 className='base-title'>{user.name}</h2>
+                        <img className='img-editProfile' src={headProfileEdite} alt="#" />
+                    </div>
+
+                    <p className='base-subtitle'>{user.email}</p>
+                    <span className='base-text' >{user.status}</span>
+                </div>
+
+            </div>
+            <div className='profileUserHead-colorLine' >
+                <div className='profileUserHead-colorLine__violet' ></div>
+                <div className='profileUserHead-colorLine__yellow' ></div>
+            </div>
         </div>
     );
 };
