@@ -1,0 +1,13 @@
+.baseTextarea {
+    width: 340px;
+    height: 28px;
+    padding: 14px 25px;
+    border: 1px solid #4C4C4C;
+    background-color: transparent;
+    outline: none;
+
+    &::placeholder {
+        font-size: 14px;
+        color: #232536;
+    }
+}

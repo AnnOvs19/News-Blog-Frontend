@@ -1,0 +1,115 @@
+.editProfileForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(244, 240, 248);
+
+    &-box {
+        margin-top: 135px;
+        margin-bottom: 100px;
+        max-width: 1200px;
+        width: 1200px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background-color: white;
+
+        h2 {
+            font-size: 40px;
+            margin-top: 50px;
+            color: #232536;
+        }
+
+        &__content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 40px;
+            padding: 50px;
+
+            &-img {
+                display: flex;
+                flex-direction: column;
+
+                img {
+                    width: 196px;
+                }
+
+            }
+
+            .avatarBtn {
+                margin-top: 15px;
+                background-color: #232536;
+                color: white;
+
+                &:hover {
+                    background: #FFD050;
+                    color: #11121a;
+                }
+
+
+            }
+
+            &-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 20px;
+            }
+        }
+
+        &__bottom {
+            display: flex;
+            flex-direction: row;
+            width: 630px;
+            padding: 0 50px;
+            margin-bottom: 50px;
+            gap: 30px;
+
+            .cancelBtn {
+                width: 100%;
+                background-color: #c94030;
+                color: white;
+
+                &:hover {
+                    background-color: #592EA9;
+                    color: white;
+                }
+            }
+
+
+            .saveBtn {
+                width: 100%;
+                background-color: #232536;
+                color: white;
+
+                &:hover {
+                    background: #FFD050;
+                    color: #11121a;
+                }
+            }
+        }
+
+    }
+}
+
+.disableForm {
+    background-color: #232536ca !important;
+    color: white !important;
+
+    &:hover {
+        background-color: #232536ca !important;
+        color: white !important;
+    }
+}
+
+.info {
+    p {
+        font-size: 15px;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #232536;
+    }
+}
