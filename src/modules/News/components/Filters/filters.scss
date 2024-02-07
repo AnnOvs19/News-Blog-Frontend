@@ -21,7 +21,7 @@
             transition: 0.4s;
 
             &-input {
-                width: 480px;
+                width: 420px;
                 height: 24px;
                 padding: 10px 20px;
                 background-color: rgba(255, 255, 255, 0.56);
@@ -48,6 +48,7 @@
 
         &__dropdown {
             display: flex;
+            width: 604px;
             flex-direction: row;
             gap: 20px;
         }

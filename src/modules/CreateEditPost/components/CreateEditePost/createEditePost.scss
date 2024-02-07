@@ -29,7 +29,11 @@
             gap: 40px;
             padding: 50px;
 
-            &-info {}
+            &-info {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
         }
     }
 }
