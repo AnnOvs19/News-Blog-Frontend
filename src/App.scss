@@ -26,3 +26,24 @@
     color: rgb(255, 42, 42);
     font-size: 11px;
 }
+
+.cancelBtn {
+    width: 100%;
+    background-color: #c94030 !important;
+    color: white !important;
+
+    &:hover {
+        background-color: #592EA9 !important;
+        color: white !important;
+    }
+}
+
+.disableForm {
+    background-color: #232536ca !important;
+    color: white !important;
+
+    &:hover {
+        background-color: #232536ca !important;
+        color: white !important;
+    }
+}

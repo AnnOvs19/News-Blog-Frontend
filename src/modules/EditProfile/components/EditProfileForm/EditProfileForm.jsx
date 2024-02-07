@@ -29,7 +29,6 @@ const EditProfileForm = (props) => {
 
     function handleAddAvatar({ target: { files } }) {
         const loadedImage = files[0];
-        console.log(loadedImage);
         setAvatar(URL.createObjectURL(loadedImage))
     };
 

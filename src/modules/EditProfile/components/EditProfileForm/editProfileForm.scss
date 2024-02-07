@@ -68,18 +68,6 @@
             margin-bottom: 50px;
             gap: 30px;
 
-            .cancelBtn {
-                width: 100%;
-                background-color: #c94030;
-                color: white;
-
-                &:hover {
-                    background-color: #592EA9;
-                    color: white;
-                }
-            }
-
-
             .saveBtn {
                 width: 100%;
                 background-color: #232536;
@@ -95,15 +83,7 @@
     }
 }
 
-.disableForm {
-    background-color: #232536ca !important;
-    color: white !important;
 
-    &:hover {
-        background-color: #232536ca !important;
-        color: white !important;
-    }
-}
 
 .info {
     p {
