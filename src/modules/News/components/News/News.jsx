@@ -21,10 +21,10 @@ const News = (props) => {
 
     return (
         <div>
-            {/* <BigSliderList newsData={arrBigSlider} /> */}
+            <BigSliderList newsData={arrBigSlider} />
             <Filters />
             <NewsList />
-            {/* <MiniSliderList newsData={arrMiniSlider} /> */}
+            <MiniSliderList newsData={arrMiniSlider} />
             <Link to={"/profile"}><BaseButton>Перейти в профиль</BaseButton></Link>
 
         </div>
