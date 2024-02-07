@@ -1,6 +1,6 @@
 .dropdown {
     background-color: rgba(255, 255, 255, 0.56);
-    width: 100%;
+    max-width: 97%;
     height: 26px;
     border: 1px solid #23253647;
     padding: 10px 10px 10px 0;
@@ -92,7 +92,7 @@
 
 @media (max-width: 1250px) {
     .dropdown {
-        width: 327px;
+        width: 100%;
         height: 26px;
     }
 }

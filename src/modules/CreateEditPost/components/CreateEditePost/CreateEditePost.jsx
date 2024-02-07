@@ -6,6 +6,7 @@ import BaseTextarea from '../../../../ui/BaseTextarea/BaseTextarea';
 import FileInput from '../../../../ui/FileInput/FileInput';
 import BaseButton from '../../../../ui/BaseButton/BaseButton';
 import BaseInput from '../../../../ui/BaseInput/BaseInput';
+import BackgroundNews from "../../../../assets/images/backgroundNews.jpg";
 
 const CreateEditePost = (props) => {
 
@@ -17,7 +18,11 @@ const CreateEditePost = (props) => {
                 <h2 className='base-title'>Create post</h2>
                 <div className='createArticle-box__content'>
                     <div className='createArticle-box__content-info'>
-                        <Dropdown type={1} text={"Sorting by tags"} />
+                        <Dropdown type={1} text={"Select tag"} />
+                        <BaseButton>
+                            <FileInput accept="image/*">Edit photo</FileInput>
+                        </BaseButton>
+                        <img className='img-backgroundNews' src={BackgroundNews} alt="#" />
                         <div className='info'>
                             <p>Title of article</p>
                             <BaseInput />
@@ -28,11 +33,10 @@ const CreateEditePost = (props) => {
                             <BaseTextarea name={"your-text"} placeholder={"Your text"} />
                             <span></span>
                         </div>
-                        <BaseButton>
-                            <FileInput accept="image/*">Edit photo</FileInput>
-                        </BaseButton>
 
+                        <BaseButton>Create post</BaseButton>
                     </div>
+
                 </div>
             </div>
         </div>
