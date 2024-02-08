@@ -13,7 +13,7 @@ const MiniSliderItem = ({ newsData }) => {
                     <span className='base-text' >| {newsData.date}</span>
                 </div>
                 <h1 className='base-title'>{newsData.title}</h1>
-                <p className='base-text'>{newsData.content.substring(0, 150)}...</p>
+                <p className='base-text'>{newsData.content.substring(0, 140)}...</p>
             </div>
         </div>
     );
