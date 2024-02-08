@@ -21,19 +21,46 @@ const MiniSliderList = ({ newsData }) => {
                     slidesPerView={1}
                     spaceBetween={5}
                     breakpoints={{
-                        640: {
+
+
+                        0: {
+                            slidesPerView: 1,
+                        },
+                        400: {
                             slidesPerView: 2,
-                            spaceBetween: 20,
                         },
-                        768: {
-                            slidesPerView: 4,
-                            spaceBetween: 40,
+                        639: {
+                            slidesPerView: 2,
                         },
-                        1024: {
-                            slidesPerView: 4,
-                            spaceBetween: 30,
+                        865: {
+                            slidesPerView: 2
                         },
+                        1000: {
+                            slidesPerView: 4
+                        },
+                        1500: {
+                            slidesPerView: 4
+                        },
+                        1700: {
+                            slidesPerView: 4
+                        }
+
+
+
+                        // 640: {
+                        //     slidesPerView: 2,
+                        //     spaceBetween: 20,
+                        // },
+                        // 768: {
+                        //     slidesPerView: 3,
+                        //     spaceBetween: 40,
+                        // },
+                        // 1024: {
+                        //     slidesPerView: 4,
+                        //     spaceBetween: 30,
+                        // },
                     }}>
+
                     {pages?.map((news) => {
                         return (
                             <SwiperSlide>

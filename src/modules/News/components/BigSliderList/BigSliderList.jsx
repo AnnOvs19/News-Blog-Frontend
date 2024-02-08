@@ -11,12 +11,10 @@ const BigSliderList = ({ newsData }) => {
 
     return (
         <div className='bigSliderList'>
-            {/* <Swiper autoplay={{
+            <Swiper autoplay={{
                 delay: 6500,
                 disableOnInteraction: false,
-            }} modules={[Autoplay]} loop={true} speed={1500}> */}
-
-            <Swiper>
+            }} modules={[Autoplay]} loop={true} speed={1500}>
 
                 {pages?.map((news) => {
                     return (
