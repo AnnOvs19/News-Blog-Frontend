@@ -1,5 +1,4 @@
 .bigSliderList {
-
     margin: 0 auto;
     margin-top: 150px;
     max-width: 1200px;
@@ -7,13 +6,25 @@
     align-items: center;
     overflow: hidden;
 
-    // &__array {
-    //     display: flex;
-    //     // transition: translate;
-    //     // transition-property: transform;
-    //     // transition-duration: 1000ms;
-    //     // transition-timing-function: ease-in-out;
 
+    @media (max-width: 1250px) {
 
-    // }
+        max-width: 700px;
+    }
+
+    @media (max-width: 800px) {
+        margin-top: 140px;
+        max-width: 490px;
+    }
+
+    @media (max-width: 500px) {
+        margin-top: 110px;
+        max-width: 340px;
+
+    }
+
+    @media (max-width: 320px) {
+        margin-top: 100px;
+        max-width: 265px;
+    }
 }
