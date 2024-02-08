@@ -66,13 +66,13 @@ const CreateEditePost = (props) => {
                 <div className='createArticle-box__content'>
                     <div className='createArticle-box__content-info'>
                         <Dropdown type={1} text={"Select tag"} />
+                        <img className='img-backgroundNews' src={bacgroundNews} alt="#" />
                         <BaseButton>
                             <FileInput accept="image/*" onChange={handleBacgroundNews}>Edit photo</FileInput>
                         </BaseButton>
-                        <img className='img-backgroundNews' src={bacgroundNews} alt="#" />
                         <div className='info'>
                             <p>Title of article</p>
-                            <BaseInput onChange={(e) => titleHandler(e)} onBlur={(e) => blurHandler(e)} value={title} invalid={titleDirty && titleError} name={"title"} type={"text"} placeholder={"Your title"} />
+                            <BaseInput onChange={(e) => titleHandler(e)} onBlur={(e) => blurHandler(e)} value={title} invalid={titleDirty && titleError} name={"title"} type={"text"} placeholder={"Your title"} styles={"postInput"} />
                             <span className={titleError ? "error-span" : ""}>{(titleDirty && titleError) && (titleError)}</span>
                         </div>
                         <div className='info'>

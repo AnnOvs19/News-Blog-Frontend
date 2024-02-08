@@ -48,5 +48,120 @@
 }
 
 .img-backgroundNews {
-    max-width: 392px;
+    width: 440px;
+}
+
+.postInput {
+    width: 390px;
+}
+
+@media (max-width: 1250px) {
+    .createArticle {
+        &-box {
+            margin-bottom: 60px;
+            max-width: 700px;
+            width: 700px;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .createArticle {
+        &-box {
+            max-width: 490px;
+            width: 490px;
+
+            &__content {
+                display: flex;
+                gap: 30px;
+                padding: 30px;
+            }
+        }
+    }
+
+    .postInput {
+        width: 330px;
+    }
+
+    .img-backgroundNews {
+        width: 380px;
+    }
+}
+
+@media (max-width: 500px) {
+    .createArticle {
+        &-box {
+            max-width: 340px;
+            width: 340px;
+
+            h2 {
+                font-size: 32px;
+                margin-top: 30px;
+                color: #232536;
+            }
+
+            &__content {
+                display: flex;
+                gap: 15px;
+                padding: 20px;
+            }
+        }
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    .postInput {
+        width: 260px;
+    }
+
+    .img-backgroundNews {
+        width: 305px;
+    }
+}
+
+@media (max-width: 380px) {}
+
+@media (max-width: 320px) {
+    .createArticle {
+        &-box {
+            max-width: 265px;
+            width: 265px;
+
+            h2 {
+                font-size: 28px;
+                margin-top: 25px;
+                color: #232536;
+            }
+
+            &__content {
+                display: flex;
+                gap: 15px;
+                padding: 15px;
+
+
+                &-info {
+                    .dropdown {
+                        width: 230px;
+                    }
+                }
+            }
+        }
+    }
+
+    .info {
+        p {
+            font-size: 10px;
+            margin-bottom: 6px;
+        }
+    }
+
+    .postInput {
+        width: 200px;
+    }
+
+    .img-backgroundNews {
+        width: 242px;
+    }
 }
