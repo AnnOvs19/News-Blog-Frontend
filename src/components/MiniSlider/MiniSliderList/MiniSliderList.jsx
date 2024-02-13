@@ -21,26 +21,6 @@ const MiniSliderList = ({ newsData }) => {
           slidesPerView={1}
           spaceBetween={5}
           breakpoints={{
-<<<<<<< HEAD
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 20
-            },
-            768: {
-              slidesPerView: 4,
-              spaceBetween: 40
-            },
-            1024: {
-              slidesPerView: 4,
-              spaceBetween: 30
-            }
-          }}
-        >
-          {pages?.map((news, index) => {
-            return (
-              <SwiperSlide key={index}>
-                <MiniSliderItem newsData={news} key={index} />
-=======
             639: {
               slidesPerView: 1,
             },
@@ -63,11 +43,10 @@ const MiniSliderList = ({ newsData }) => {
             },
           }}
         >
-          {pages?.map((news) => {
+          {pages?.map((news, index) => {
             return (
-              <SwiperSlide>
+              <SwiperSlide key={index}>
                 <MiniSliderItem newsData={news} />
->>>>>>> 6dd922d537a86402cb9583ef4fd84ddbb901b133
               </SwiperSlide>
             );
           })}
