@@ -43,9 +43,9 @@ const MiniSliderList = ({ newsData }) => {
             },
           }}
         >
-          {pages?.map((news) => {
+          {pages?.map((news, index) => {
             return (
-              <SwiperSlide>
+              <SwiperSlide key={index}>
                 <MiniSliderItem newsData={news} />
               </SwiperSlide>
             );
