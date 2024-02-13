@@ -3,9 +3,10 @@ import mockImg from "../../../../assets/images/backgroundNews.jpg";
 import "./newsItem.scss";
 
 const NewsItem = ({ newsData }) => {
+  const pathImage = `http://localhost:6868/${newsData.img}`;
   return (
     <div className="newsItem">
-      <img src={newsData.img ? newsData.img : mockImg} alt="#" />
+      <img src={newsData.img ? pathImage : mockImg} alt="#" />
       <div className="newsItem__content">
         <div>
           <span className="base-text">By</span>
