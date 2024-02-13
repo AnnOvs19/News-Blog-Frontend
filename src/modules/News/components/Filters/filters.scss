@@ -1,5 +1,5 @@
 .filters {
-    margin-top: 120px;
+    margin-top: 70px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -12,7 +12,7 @@
         display: flex;
         align-items: center;
         flex-direction: row;
-        gap: 20px;
+        gap: 55px;
 
         &__search {
             display: flex;
@@ -57,10 +57,13 @@
 
 @media (max-width: 1250px) {
     .filters {
+        margin-top: 60px;
+
         &-box {
             max-width: 700px;
             width: 700px;
             flex-direction: column;
+            gap: 20px;
 
             &__search {
                 &-input {
@@ -68,6 +71,11 @@
                     height: 24px;
                     padding: 10px 10px;
                 }
+            }
+
+            &__dropdown {
+                width: 700px;
+                gap: 20px;
             }
         }
 
@@ -77,6 +85,7 @@
 
 @media (max-width: 800px) {
     .filters {
+
         &-box {
             max-width: 490px;
             width: 490px;
@@ -88,12 +97,22 @@
                     padding: 10px 20px;
                 }
             }
+
+            &__dropdown {
+                max-width: 100%;
+                gap: 20px;
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
         }
     }
 }
 
 @media (max-width: 500px) {
     .filters {
+        margin-top: 35px;
+
         &-box {
             max-width: 340px;
             width: 340px;
@@ -117,9 +136,10 @@
             }
 
             &__dropdown {
+                max-width: 100%;
                 display: flex;
                 flex-direction: column;
-                gap: 20px;
+                align-items: center;
             }
         }
     }
@@ -127,13 +147,15 @@
 
 @media (max-width: 320px) {
     .filters {
+        margin-top: 25px;
+
         &-box {
             max-width: 265px;
             width: 265px;
 
             &__search {
                 &-input {
-                    width: 158px;
+                    width: 165px;
                     height: 24px;
                     padding: 9px 10px;
                 }

@@ -21,6 +21,7 @@ const MiniSliderList = ({ newsData }) => {
           slidesPerView={1}
           spaceBetween={5}
           breakpoints={{
+<<<<<<< HEAD
             640: {
               slidesPerView: 2,
               spaceBetween: 20
@@ -39,6 +40,34 @@ const MiniSliderList = ({ newsData }) => {
             return (
               <SwiperSlide key={index}>
                 <MiniSliderItem newsData={news} key={index} />
+=======
+            639: {
+              slidesPerView: 1,
+            },
+
+            820: {
+              slidesPerView: 3,
+            },
+            865: {
+              slidesPerView: 1,
+            },
+
+            1000: {
+              slidesPerView: 4,
+            },
+            1500: {
+              slidesPerView: 4,
+            },
+            1700: {
+              slidesPerView: 4,
+            },
+          }}
+        >
+          {pages?.map((news) => {
+            return (
+              <SwiperSlide>
+                <MiniSliderItem newsData={news} />
+>>>>>>> 6dd922d537a86402cb9583ef4fd84ddbb901b133
               </SwiperSlide>
             );
           })}
