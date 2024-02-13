@@ -88,17 +88,22 @@ const Register = (props) => {
     }
   }
 
-  function userCreate() {
+  async function userCreate() {
     const URL = "http://localhost:6868/api/user/registration";
 
     if (formValid) {
-      fetch(URL, {
+      const data = {
+        name: name,
+        email: email,
+        password: password
+      };
+
+      await fetch(URL, {
         method: "POST",
-        body: {
-          name: name,
-          email: email,
-          password: password
-        }
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(data)
       });
     }
   }
@@ -145,7 +150,10 @@ const Register = (props) => {
       </span>
 
       <BaseButton
-        onClick={userCreate}
+        onClick={(e) => {
+          e.preventDefault();
+          userCreate();
+        }}
         disabled={!formValid && disable}
         styles={disable ? "modal-btn disable" : "modal-btn"}
       >
