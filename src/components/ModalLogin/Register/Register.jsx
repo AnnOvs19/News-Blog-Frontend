@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import BaseInput from "../../../ui/BaseInput/BaseInput";
 import BaseButton from "../../../ui/BaseButton/BaseButton";
+import ModalNotice from "../../ModalNotice/ModalNotice";
 
-const Register = (props) => {
+const Register = ({ setActive }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,6 +25,8 @@ const Register = (props) => {
   const [disable, setDisable] = useState(true);
 
   const [formValid, setFormValid] = useState(false);
+
+  const [response, setResponse] = useState(null);
 
   useEffect(() => {
     if (nameError || emailError || passwordError) {
@@ -104,62 +107,84 @@ const Register = (props) => {
           "Content-type": "application/json"
         },
         body: JSON.stringify(data)
-      });
+      })
+        .then((response) => response.json())
+        .then((res) => {
+          setActive(false);
+          setResponse(res);
+        })
+        .catch((res) => {
+          setResponse(res);
+          console.log(res);
+        });
     }
   }
 
   return (
-    <form className="body__register">
-      <BaseInput
-        onChange={(e) => nameHandler(e)}
-        onBlur={(e) => blurHandler(e)}
-        value={name}
-        invalid={nameDirty && nameError}
-        name={"name"}
-        type={"text"}
-        placeholder={"Name"}
-      />
-      <span className={nameError ? "error-span" : ""}>
-        {nameDirty && nameError && nameError}
-      </span>
+    <>
+      <form className="body__register">
+        <BaseInput
+          onChange={(e) => nameHandler(e)}
+          onBlur={(e) => blurHandler(e)}
+          value={name}
+          invalid={nameDirty && nameError}
+          name={"name"}
+          type={"text"}
+          placeholder={"Name"}
+        />
+        <span className={nameError ? "error-span" : ""}>
+          {nameDirty && nameError && nameError}
+        </span>
 
-      <BaseInput
-        onChange={(e) => emailHandler(e)}
-        onBlur={(e) => blurHandler(e)}
-        value={email}
-        invalid={emailDirty && emailError}
-        name={"email"}
-        type={"email"}
-        placeholder={"E-mail"}
-      />
-      <span className={emailError ? "error-span" : ""}>
-        {emailDirty && emailError && emailError}
-      </span>
+        <BaseInput
+          onChange={(e) => emailHandler(e)}
+          onBlur={(e) => blurHandler(e)}
+          value={email}
+          invalid={emailDirty && emailError}
+          name={"email"}
+          type={"email"}
+          placeholder={"E-mail"}
+        />
+        <span className={emailError ? "error-span" : ""}>
+          {emailDirty && emailError && emailError}
+        </span>
 
-      <BaseInput
-        onChange={(e) => passwordHandler(e)}
-        onBlur={(e) => blurHandler(e)}
-        value={password}
-        invalid={passwordDirty && passwordError}
-        name={"password"}
-        type={"password"}
-        placeholder={"Password"}
-      />
-      <span className={passwordError ? "error-span" : ""}>
-        {passwordDirty && passwordError && passwordError}
-      </span>
+        <BaseInput
+          onChange={(e) => passwordHandler(e)}
+          onBlur={(e) => blurHandler(e)}
+          value={password}
+          invalid={passwordDirty && passwordError}
+          name={"password"}
+          type={"password"}
+          placeholder={"Password"}
+        />
+        <span className={passwordError ? "error-span" : ""}>
+          {passwordDirty && passwordError && passwordError}
+        </span>
 
-      <BaseButton
-        onClick={(e) => {
-          e.preventDefault();
-          userCreate();
-        }}
-        disabled={!formValid && disable}
-        styles={disable ? "modal-btn disable" : "modal-btn"}
-      >
-        Register
-      </BaseButton>
-    </form>
+        <BaseButton
+          onClick={(e) => {
+            e.preventDefault();
+            userCreate();
+          }}
+          disabled={!formValid && disable}
+          styles={disable ? "modal-btn disable" : "modal-btn"}
+        >
+          Register
+        </BaseButton>
+      </form>
+      {/* {response && (
+        <ModalNotice
+          text={response.message}
+          type={response.status ? "ok" : "error"}
+        />
+      )} */}
+
+      {/* <ModalNotice
+        text={response.message}
+        type={response.status ? "ok" : "error"}
+      /> */}
+    </>
   );
 };
 
