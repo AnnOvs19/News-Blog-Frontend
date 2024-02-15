@@ -7,11 +7,11 @@ import FileInput from "../../../../ui/FileInput/FileInput";
 import BaseButton from "../../../../ui/BaseButton/BaseButton";
 import BaseInput from "../../../../ui/BaseInput/BaseInput";
 import BackgroundNews from "../../../../assets/images/backgroundNews.jpg";
-import { user } from "../../../Profile/store/mockUser";
 import { Link } from "react-router-dom";
 
 const CreateEditePost = (props) => {
   const [bacgroundNews, setBacgroundNews] = useState(BackgroundNews);
+  const [imgData, setImgData] = useState(null);
 
   const [title, setTitle] = useState("");
   const [titleDirty, setTitleDirty] = useState(false);
@@ -22,8 +22,10 @@ const CreateEditePost = (props) => {
 
   const [formValid, setFormValid] = useState(false);
 
-  function handleBacgroundNews({ target: { files } }) {
-    const loadedImage = files[0];
+  function handleBacgroundNews(e) {
+    e.preventDefault();
+    const loadedImage = e.target.files[0];
+    setImgData(e.target.files[0]);
     setBacgroundNews(URL.createObjectURL(loadedImage));
   }
 
@@ -65,6 +67,10 @@ const CreateEditePost = (props) => {
 
     const URL = "http://localhost:6868/api/post";
     const formData = new FormData(e.target);
+    //Данные о id юзера получаем из стора, typeId новости из дропдауна
+    formData.append("userId", 6);
+    formData.append("typeId", 2);
+    formData.append("img", imgData);
 
     if (formValid) {
       await fetch(URL, {
@@ -93,7 +99,10 @@ const CreateEditePost = (props) => {
             <Dropdown type={1} text={"Select tag"} />
             <img className="img-backgroundNews" src={bacgroundNews} alt="#" />
             <BaseButton>
-              <FileInput accept="image/*" onChange={handleBacgroundNews}>
+              <FileInput
+                accept="image/*"
+                onChange={(e) => handleBacgroundNews(e)}
+              >
                 Edit photo
               </FileInput>
             </BaseButton>
