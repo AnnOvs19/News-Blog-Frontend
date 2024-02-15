@@ -115,7 +115,6 @@ const Register = ({ setActive }) => {
         })
         .catch((res) => {
           setResponse(res);
-          console.log(res);
         });
     }
   }

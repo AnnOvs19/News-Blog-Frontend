@@ -14,7 +14,7 @@ const NewsList = (props) => {
       <div className="newsList__array">
         {posts?.map((news, index) => {
           return (
-            <Link to={`/post/${news.id}`}>
+            <Link to={`/post/${news.id}`} key={index}>
               <NewsItem newsData={news} key={index} />
             </Link>
           );

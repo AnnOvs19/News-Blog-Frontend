@@ -4,18 +4,18 @@ const initialState = {
     posts: []
 }
 
-export const newsSlise = createSlice({
-    name: "newsSlise",
+export const newsSlice = createSlice({
+    name: "newsSlice",
     initialState,
     reducers: {
         loadPosts: (state, action) => {
             state.posts = action.payload;
         }
     }
-})
+});
 
-export const { loadPosts } = newsSlise.actions;
+export const { loadPosts } = newsSlice.actions;
 
-export const getPosts = (state) => state.newsSlise.posts;
+export const getPosts = (state) => state.newsSlice.posts;
 
-export default newsSlise.reducer;
+export default newsSlice.reducer;
