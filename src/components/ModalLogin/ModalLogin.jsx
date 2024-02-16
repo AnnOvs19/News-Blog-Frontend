@@ -33,7 +33,11 @@ const ModalLogin = ({ active, setActive }) => {
           </div>
         </div>
         <div className="body">
-          {activeTab == 0 ? <Login /> : <Register setActive={setActive} />}
+          {activeTab == 0 ? (
+            <Login setActive={setActive} />
+          ) : (
+            <Register setActive={setActive} />
+          )}
         </div>
       </div>
     </div>

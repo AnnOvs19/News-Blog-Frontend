@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import BaseInput from "../../../ui/BaseInput/BaseInput";
 import BaseButton from "../../../ui/BaseButton/BaseButton";
-import ModalNotice from "../../ModalNotice/ModalNotice";
+import { useDispatch } from "react-redux";
+import {
+  auth,
+  setToken,
+  setUser
+} from "../../../modules/Profile/store/userSlice";
+import { jwtDecode } from "jwt-decode";
 
 const Register = ({ setActive }) => {
+  const dispatch = useDispatch();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -101,6 +109,8 @@ const Register = ({ setActive }) => {
         password: password
       };
 
+      setActive(false);
+
       await fetch(URL, {
         method: "POST",
         headers: {
@@ -110,11 +120,23 @@ const Register = ({ setActive }) => {
       })
         .then((response) => response.json())
         .then((res) => {
-          setActive(false);
-          setResponse(res);
+          if (res.token) {
+            //Запись токена
+            dispatch(setToken(res.token));
+            //Декодирование токена
+            dispatch(setUser(jwtDecode(res.token)));
+            //Пользователь авторизован!
+            dispatch(auth(true));
+            //Сохранение токена в localStorage
+            localStorage.setItem("token", res.token);
+            alert("Вы зарегестрированы!");
+          } else {
+            alert(res.message);
+          }
         })
         .catch((res) => {
-          setResponse(res);
+          alert(res.message);
+          setActive(false);
         });
     }
   }
@@ -172,17 +194,6 @@ const Register = ({ setActive }) => {
           Register
         </BaseButton>
       </form>
-      {/* {response && (
-        <ModalNotice
-          text={response.message}
-          type={response.status ? "ok" : "error"}
-        />
-      )} */}
-
-      {/* <ModalNotice
-        text={response.message}
-        type={response.status ? "ok" : "error"}
-      /> */}
     </>
   );
 };

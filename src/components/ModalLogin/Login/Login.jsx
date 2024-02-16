@@ -2,9 +2,14 @@ import React, { useEffect, useState } from "react";
 import BaseInput from "../../../ui/BaseInput/BaseInput";
 import BaseButton from "../../../ui/BaseButton/BaseButton";
 import { useDispatch } from "react-redux";
-import { setToken } from "../../../modules/Profile/store/userSlice";
+import {
+  auth,
+  setToken,
+  setUser
+} from "../../../modules/Profile/store/userSlice";
+import { jwtDecode } from "jwt-decode";
 
-const Login = (props) => {
+const Login = ({ setActive }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,8 +26,6 @@ const Login = (props) => {
   const [disable, setDisable] = useState(true);
 
   const [formValid, setFormValid] = useState(false);
-
-  const [response, setResponse] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -81,6 +84,7 @@ const Login = (props) => {
         email: email,
         password: password
       };
+      setActive(false);
 
       await fetch(URL, {
         method: "POST",
@@ -92,10 +96,23 @@ const Login = (props) => {
         .then((response) => response.json())
         .then((res) => {
           if (res.token) {
+            //Запись токена
             dispatch(setToken(res.token));
+            //Декодирование токена
+            dispatch(setUser(jwtDecode(res.token)));
+            //Пользователь авторизован!
+            dispatch(auth(true));
+            //Сохранение токена в localStorage
+            localStorage.setItem("token", res.token);
+            alert("Добро пожаловать!");
+          } else {
+            alert(res.message);
           }
         })
-        .catch((res) => {});
+        .catch((res) => {
+          alert(res.message);
+          setActive(false);
+        });
     }
   }
 
