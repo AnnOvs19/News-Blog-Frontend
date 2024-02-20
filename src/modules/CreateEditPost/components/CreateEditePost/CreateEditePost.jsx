@@ -8,8 +8,12 @@ import BaseButton from "../../../../ui/BaseButton/BaseButton";
 import BaseInput from "../../../../ui/BaseInput/BaseInput";
 import BackgroundNews from "../../../../assets/images/backgroundNews.jpg";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getUserData } from "../../../Profile/store/userSlice";
 
 const CreateEditePost = (props) => {
+  const user = useSelector(getUserData);
+
   const [bacgroundNews, setBacgroundNews] = useState(BackgroundNews);
   const [imgData, setImgData] = useState(null);
 
@@ -68,7 +72,7 @@ const CreateEditePost = (props) => {
     const URL = "http://localhost:6868/api/post";
     const formData = new FormData(e.target);
     //Данные о id юзера получаем из стора, typeId новости из дропдауна
-    formData.append("userId", 6);
+    formData.append("userId", user.id);
     formData.append("typeId", 2);
     formData.append("img", imgData);
 
@@ -131,13 +135,15 @@ const CreateEditePost = (props) => {
               <Link to={"/profile"}>Cancel</Link>
             </BaseButton>
 
-            <BaseButton
-              type={"submit"}
-              disabled={!formValid && disable}
-              styles={disable ? "disableForm" : ""}
-            >
-              Create post
-            </BaseButton>
+            <Link to={"/profile"}>
+              <BaseButton
+                type={"submit"}
+                disabled={!formValid && disable}
+                styles={disable ? "disableForm" : ""}
+              >
+                Create post
+              </BaseButton>
+            </Link>
           </form>
         </div>
       </div>

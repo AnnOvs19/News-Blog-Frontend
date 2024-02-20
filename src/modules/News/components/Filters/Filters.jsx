@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "./filters.scss";
 import BaseInput from "../../../../ui/BaseInput/BaseInput";
 import BaseButton from "../../../../ui/BaseButton/BaseButton";
 import Dropdown from "../../../../components/Dropdown/Dropdown";
+import { fetchGetTypes } from "../../api/fetchGetTypes";
+import { useDispatch } from "react-redux";
+import { loadTags } from "../../store/newsSlise";
 
-const Filters = (props) => {
+const Filters = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetchGetTypes().then((res) => {
+      dispatch(loadTags(res));
+    });
+  }, []);
+
   return (
     <div className="filters">
       <div className="filters-box">
