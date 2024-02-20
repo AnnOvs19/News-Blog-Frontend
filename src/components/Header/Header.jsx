@@ -46,12 +46,14 @@ const Header = () => {
           </ul>
 
           {isAuth && userData ? (
-            <Link to={"/profile"}>
-              <div className="header-box__nav-user">
-                <img src={userIcon} alt="@" />
-                <p>{userData.name}</p>
-              </div>
-            </Link>
+            <>
+              <Link to={"/profile"}>
+                <div className="header-box__nav-user">
+                  <img src={userIcon} alt="@" />
+                  <p>{userData.name}</p>
+                </div>
+              </Link>
+            </>
           ) : (
             <BaseButton
               styles={"header-box__nav-btn"}

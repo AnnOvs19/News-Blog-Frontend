@@ -2,12 +2,8 @@ import React, { useEffect, useState } from "react";
 import BaseInput from "../../../ui/BaseInput/BaseInput";
 import BaseButton from "../../../ui/BaseButton/BaseButton";
 import { useDispatch } from "react-redux";
-import {
-  auth,
-  setToken,
-  setUser
-} from "../../../modules/Profile/store/userSlice";
-import { jwtDecode } from "jwt-decode";
+import { auth, setUser } from "../../../modules/Profile/store/userSlice";
+import { registration } from "../../../api/userApi";
 
 const Register = ({ setActive }) => {
   const dispatch = useDispatch();
@@ -100,38 +96,23 @@ const Register = ({ setActive }) => {
   }
 
   async function userCreate() {
-    const URL = "http://localhost:6868/api/user/registration";
-
     if (formValid) {
       const data = {
         name: name,
         email: email,
         password: password
       };
-
       setActive(false);
 
-      await fetch(URL, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify(data)
-      })
-        .then((response) => response.json())
+      //Функция регистрации
+      registration(data)
         .then((res) => {
-          if (res.token) {
-            //Запись токена
-            dispatch(setToken(res.token));
+          if (res) {
             //Декодирование токена
-            dispatch(setUser(jwtDecode(res.token)));
+            dispatch(setUser(res));
             //Пользователь авторизован!
             dispatch(auth(true));
-            //Сохранение токена в localStorage
-            localStorage.setItem("token", res.token);
             alert("Вы зарегестрированы!");
-          } else {
-            alert(res.message);
           }
         })
         .catch((res) => {

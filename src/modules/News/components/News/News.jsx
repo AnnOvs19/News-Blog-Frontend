@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { fetchGetPosts } from "../../api/fetchGetPosts";
 import { useDispatch } from "react-redux";
 import { loadPosts } from "../../store/newsSlise";
@@ -9,7 +8,6 @@ import NewsList from "../NewsList/NewsList";
 import { newsArray } from "../../store/newsArray";
 import BigSliderList from "../BigSliderList/BigSliderList";
 import MiniSliderList from "../../../../components/MiniSlider/MiniSliderList/MiniSliderList";
-import BaseButton from "../../../../ui/BaseButton/BaseButton";
 
 import "./news.scss";
 
@@ -39,9 +37,6 @@ const News = ({}) => {
       <Filters />
       <NewsList />
       <MiniSliderList newsData={arrMiniSlider} />
-      <Link to={"/profile"}>
-        <BaseButton>Перейти в профиль</BaseButton>
-      </Link>
     </div>
   );
 };

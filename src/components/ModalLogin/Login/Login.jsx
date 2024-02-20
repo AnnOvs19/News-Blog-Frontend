@@ -2,12 +2,8 @@ import React, { useEffect, useState } from "react";
 import BaseInput from "../../../ui/BaseInput/BaseInput";
 import BaseButton from "../../../ui/BaseButton/BaseButton";
 import { useDispatch } from "react-redux";
-import {
-  auth,
-  setToken,
-  setUser
-} from "../../../modules/Profile/store/userSlice";
-import { jwtDecode } from "jwt-decode";
+import { auth, setUser } from "../../../modules/Profile/store/userSlice";
+import { login } from "../../../api/userApi";
 
 const Login = ({ setActive }) => {
   const [email, setEmail] = useState("");
@@ -77,40 +73,27 @@ const Login = ({ setActive }) => {
   }
 
   async function logIn() {
-    const URL = "http://localhost:6868/api/user/login";
-
     if (formValid) {
       const data = {
         email: email,
         password: password
       };
+
       setActive(false);
 
-      await fetch(URL, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify(data)
-      })
-        .then((response) => response.json())
+      //Функция входа
+      login(data)
         .then((res) => {
-          if (res.token) {
-            //Запись токена
-            dispatch(setToken(res.token));
-            //Декодирование токена
-            dispatch(setUser(jwtDecode(res.token)));
+          if (res) {
+            //Заполнение данных о юзере
+            dispatch(setUser(res));
             //Пользователь авторизован!
             dispatch(auth(true));
-            //Сохранение токена в localStorage
-            localStorage.setItem("token", res.token);
             alert("Добро пожаловать!");
-          } else {
-            alert(res.message);
           }
         })
         .catch((res) => {
-          alert(res.message);
+          alert(res);
           setActive(false);
         });
     }

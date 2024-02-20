@@ -1,17 +1,27 @@
 import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import headProfileEdite from "../../../../assets/icons/headProfileEdite.svg";
-import "./profileUserHead.scss";
 import MockUser from "../../../../assets/images/mockUser.png";
-import { user } from "../../store/mockUser";
-import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { getAuth, getUserData } from "../../store/userSlice";
+
+import { auth, getAuth, getUserData, setUser } from "../../store/userSlice";
+import BaseButton from "../../../../ui/BaseButton/BaseButton";
+
+import "./profileUserHead.scss";
 
 const ProfileUserHead = () => {
   //useSelector помогает получить значения из store
   const isAuth = useSelector(getAuth);
   const user = useSelector(getUserData);
+  const dispatch = useDispatch();
+
+  function logOut() {
+    localStorage.clear();
+    dispatch(setUser(null));
+    dispatch(auth(false));
+    nav("/");
+  }
 
   const nav = useNavigate();
 
@@ -38,6 +48,8 @@ const ProfileUserHead = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor.
           </span>
+
+          <BaseButton onClick={logOut}>Logout</BaseButton>
         </div>
       </div>
       <div className="profileUserHead-colorLine">
