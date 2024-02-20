@@ -3,7 +3,7 @@ import BaseInput from "../../../ui/BaseInput/BaseInput";
 import BaseButton from "../../../ui/BaseButton/BaseButton";
 import { useDispatch } from "react-redux";
 import { auth, setUser } from "../../../modules/Profile/store/userSlice";
-import { registration } from "../../../api/userApi";
+import { registration } from "../../../modules/Profile/api/registrationUser";
 
 const Register = ({ setActive }) => {
   const dispatch = useDispatch();

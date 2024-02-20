@@ -3,7 +3,7 @@ import BaseInput from "../../../ui/BaseInput/BaseInput";
 import BaseButton from "../../../ui/BaseButton/BaseButton";
 import { useDispatch } from "react-redux";
 import { auth, setUser } from "../../../modules/Profile/store/userSlice";
-import { login } from "../../../api/userApi";
+import { login } from "../../../modules/Profile/api/loginUser";
 
 const Login = ({ setActive }) => {
   const [email, setEmail] = useState("");
