@@ -7,12 +7,16 @@ import FileInput from "../../../../ui/FileInput/FileInput";
 import BaseButton from "../../../../ui/BaseButton/BaseButton";
 import BaseInput from "../../../../ui/BaseInput/BaseInput";
 import BackgroundNews from "../../../../assets/images/backgroundNews.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getUserData } from "../../../Profile/store/userSlice";
 
 const CreateEditePost = (props) => {
   const user = useSelector(getUserData);
+
+  const nav = useNavigate();
+
+  const [selectedTag, setSelectedTag] = useState(null);
 
   const [bacgroundNews, setBacgroundNews] = useState(BackgroundNews);
   const [imgData, setImgData] = useState(null);
@@ -73,7 +77,7 @@ const CreateEditePost = (props) => {
     const formData = new FormData(e.target);
     //Данные о id юзера получаем из стора, typeId новости из дропдауна
     formData.append("userId", user.id);
-    formData.append("typeId", 2);
+    formData.append("typeId", selectedTag);
     formData.append("img", imgData);
 
     if (formValid) {
@@ -84,6 +88,7 @@ const CreateEditePost = (props) => {
         .then((response) => response.json())
         .then((res) => {
           console.log(res);
+          nav("/profile");
         })
         .catch((res) => {});
     }
@@ -100,7 +105,11 @@ const CreateEditePost = (props) => {
             }}
             className="createArticle-box__content-info"
           >
-            <Dropdown type={1} text={"Select tag"} />
+            <Dropdown
+              type={1}
+              text={"Select tag"}
+              selectIndex={setSelectedTag}
+            />
             <img className="img-backgroundNews" src={bacgroundNews} alt="#" />
             <BaseButton>
               <FileInput
@@ -135,15 +144,13 @@ const CreateEditePost = (props) => {
               <Link to={"/profile"}>Cancel</Link>
             </BaseButton>
 
-            <Link to={"/profile"}>
-              <BaseButton
-                type={"submit"}
-                disabled={!formValid && disable}
-                styles={disable ? "disableForm" : ""}
-              >
-                Create post
-              </BaseButton>
-            </Link>
+            <BaseButton
+              type={"submit"}
+              disabled={!formValid && disable}
+              styles={disable ? "disableForm" : ""}
+            >
+              Create post
+            </BaseButton>
           </form>
         </div>
       </div>

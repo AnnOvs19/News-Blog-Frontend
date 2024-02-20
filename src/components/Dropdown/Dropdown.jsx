@@ -4,7 +4,7 @@ import "./dropdown.scss";
 import { useSelector } from "react-redux";
 import { getTags } from "../../modules/News/store/newsSlise";
 
-const Dropdown = ({ type, categories, text }) => {
+const Dropdown = ({ type, categories, text, selectIndex }) => {
   const [selected, setSelected] = useState(text);
   const [open, setOpen] = useState(false);
 
@@ -72,6 +72,7 @@ const Dropdown = ({ type, categories, text }) => {
                     className="tags-item"
                     onClick={() => {
                       setSelected(itemTag.name);
+                      selectIndex(itemTag.id);
                     }}
                   >
                     #{itemTag.name}
