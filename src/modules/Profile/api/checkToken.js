@@ -1,8 +1,10 @@
 import { jwtDecode } from "jwt-decode";
 
 //Функция проверки токена при перезагрузки страницы
-export async function check() {
+export async function checkToken() {
   const URL = "http://localhost:6868/api/user/auth";
+
+  //localStorage.getItem() - получение переменной записанной в локальное хранилище
 
   const response = await fetch(URL, {
     method: "GET",

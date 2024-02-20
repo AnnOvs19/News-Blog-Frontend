@@ -65,13 +65,14 @@
         display: flex;
         color: white;
         gap: 8px;
-        margin-left: 365px;
+        margin-left: 25px;
         align-items: center;
         font-size: 16px;
 
         img {
           height: 40px;
           max-height: fit-content;
+          cursor: pointer;
         }
       }
     }

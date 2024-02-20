@@ -38,7 +38,6 @@ const Header = () => {
         >
           <ul>
             <li>
-              {" "}
               <Link to={"/"}>Home</Link>
             </li>
             <li>About Us</li>
@@ -50,7 +49,6 @@ const Header = () => {
               <Link to={"/profile"}>
                 <div className="header-box__nav-user">
                   <img src={userIcon} alt="@" />
-                  <p>{userData.name}</p>
                 </div>
               </Link>
             </>

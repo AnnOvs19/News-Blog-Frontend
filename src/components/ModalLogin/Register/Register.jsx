@@ -3,7 +3,10 @@ import BaseInput from "../../../ui/BaseInput/BaseInput";
 import BaseButton from "../../../ui/BaseButton/BaseButton";
 import { useDispatch } from "react-redux";
 import { auth, setUser } from "../../../modules/Profile/store/userSlice";
-import { registration } from "../../../modules/Profile/api/registrationUser";
+import {
+  registration,
+  registrationUser
+} from "../../../modules/Profile/api/registrationUser";
 
 const Register = ({ setActive }) => {
   const dispatch = useDispatch();
@@ -105,7 +108,7 @@ const Register = ({ setActive }) => {
       setActive(false);
 
       //Функция регистрации
-      registration(data)
+      registrationUser(data)
         .then((res) => {
           if (res) {
             //Декодирование токена

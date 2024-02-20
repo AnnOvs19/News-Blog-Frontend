@@ -1,6 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 
-export async function registration(data) {
+export async function registrationUser(data) {
   const URL = "http://localhost:6868/api/user/registration";
 
   const response = await fetch(URL, {

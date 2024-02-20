@@ -16,16 +16,18 @@ import NewsPage from "./pages/NewsPage/NewsPage";
 
 import { auth, setUser } from "./modules/Profile/store/userSlice";
 import Loader from "./components/Loader/Loader";
-import { check } from "./modules/Profile/api/checkToken";
+import { check, checkToken } from "./modules/Profile/api/checkToken";
 
 import "./App.scss";
 
 function App() {
   const dispatch = useDispatch();
+
+  //Нужно для предотвращения ререндера хедера при перезагрузке
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    check()
+      checkToken()
       .then((res) => {
         if (res) {
           //Пользователь авторизован!

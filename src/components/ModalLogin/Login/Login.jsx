@@ -3,7 +3,7 @@ import BaseInput from "../../../ui/BaseInput/BaseInput";
 import BaseButton from "../../../ui/BaseButton/BaseButton";
 import { useDispatch } from "react-redux";
 import { auth, setUser } from "../../../modules/Profile/store/userSlice";
-import { login } from "../../../modules/Profile/api/loginUser";
+import { login, loginUser } from "../../../modules/Profile/api/loginUser";
 
 const Login = ({ setActive }) => {
   const [email, setEmail] = useState("");
@@ -82,7 +82,7 @@ const Login = ({ setActive }) => {
       setActive(false);
 
       //Функция входа
-      login(data)
+      loginUser(data)
         .then((res) => {
           if (res) {
             //Заполнение данных о юзере
