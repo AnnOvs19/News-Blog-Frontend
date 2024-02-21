@@ -20,7 +20,7 @@ const News = ({}) => {
     fetchGetPosts().then((response) => {
       if (response.status) {
         setData(response);
-        dispatch(loadPosts(response.posts));
+        dispatch(loadPosts(response.posts.sort((a, b) => b.id - a.id)));
       }
     });
   }, []);
