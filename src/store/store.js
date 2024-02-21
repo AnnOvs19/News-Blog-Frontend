@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import newsSlise from "../modules/News/store/newsSlise";
-
+import newsSlice from "../modules/News/store/newsSlise";
+import userSlice from "../modules/Profile/store/userSlice";
 
 export const store = configureStore({
-    reducer: {
-        newsSlise: newsSlise,
-    }
-})
+  reducer: {
+    newsSlice: newsSlice,
+    userSlice: userSlice
+  }
+});

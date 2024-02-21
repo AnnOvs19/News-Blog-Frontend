@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
 import BaseInput from "../../../ui/BaseInput/BaseInput";
 import BaseButton from "../../../ui/BaseButton/BaseButton";
-import ModalNotice from "../../ModalNotice/ModalNotice";
+import { useDispatch } from "react-redux";
+import { auth, setUser } from "../../../modules/Profile/store/userSlice";
+import {
+  registration,
+  registrationUser
+} from "../../../modules/Profile/api/registrationUser";
 
 const Register = ({ setActive }) => {
+  const dispatch = useDispatch();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -92,30 +99,28 @@ const Register = ({ setActive }) => {
   }
 
   async function userCreate() {
-    const URL = "http://localhost:6868/api/user/registration";
-
     if (formValid) {
       const data = {
         name: name,
         email: email,
         password: password
       };
+      setActive(false);
 
-      await fetch(URL, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify(data)
-      })
-        .then((response) => response.json())
+      //Функция регистрации
+      registrationUser(data)
         .then((res) => {
-          setActive(false);
-          setResponse(res);
+          if (res) {
+            //Декодирование токена
+            dispatch(setUser(res));
+            //Пользователь авторизован!
+            dispatch(auth(true));
+            alert("Вы зарегестрированы!");
+          }
         })
         .catch((res) => {
-          setResponse(res);
-          console.log(res);
+          alert(res.message);
+          setActive(false);
         });
     }
   }
@@ -173,17 +178,6 @@ const Register = ({ setActive }) => {
           Register
         </BaseButton>
       </form>
-      {/* {response && (
-        <ModalNotice
-          text={response.message}
-          type={response.status ? "ok" : "error"}
-        />
-      )} */}
-
-      {/* <ModalNotice
-        text={response.message}
-        type={response.status ? "ok" : "error"}
-      /> */}
     </>
   );
 };

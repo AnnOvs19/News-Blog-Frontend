@@ -10,6 +10,7 @@
     &__array {
         display: flex;
         flex-direction: column;
+        width: 100%;
         gap: 30px;
 
         &-head {
@@ -26,6 +27,15 @@
     }
 }
 
+.emtyPosts{
+    color: rgba(0, 0, 0, 0.818);
+    margin-top: 35px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media (max-width: 1250px) {
     .profileUserList {
         max-width: 700px;
@@ -37,6 +47,11 @@
                 margin-bottom: 18px;
             }
         }
+    }
+
+    .emtyPosts{
+        margin-top: 30px;
+        font-size: 28px;
     }
 }
 
@@ -55,6 +70,11 @@
             }
         }
     }
+
+    .emtyPosts{
+        margin-top: 35px;
+        font-size: 25px;
+    }
 }
 
 @media (max-width: 500px) {
@@ -70,6 +90,12 @@
             }
         }
     }
+
+    .emtyPosts{
+        margin-top: 35px;
+        font-size: 18px;
+    }
+
 }
 
 @media (max-width: 320px) {
@@ -84,5 +110,10 @@
                 margin-bottom: 0px;
             }
         }
+    }
+
+    .emtyPosts{
+        margin-top: 35px;
+        font-size: 14px;
     }
 }
