@@ -3,18 +3,25 @@ import { user } from "../../store/mockUser";
 
 import BaseButton from "../../../../ui/BaseButton/BaseButton";
 
+import emptyAvatar from "../../../../assets/images/backgroundAvatar.jpg";
 import mockImg from "../../../../assets/images/backgroundNews.jpg";
 import Like from "../../../../assets/icons/Like.svg";
 import "./profileUserItem.scss";
 
-const ProfileUserItem = ({ newsData, userName }) => {
+const ProfileUserItem = ({ newsData, userName, userAvatar }) => {
   const pathImage = `http://localhost:6868/${newsData.img}`;
+  const pathAvatar = `http://localhost:6868/${userAvatar}`;
+
   return (
     <div className="profileUserItem">
       <div className="profileUserItem__content">
         <div className="profileUserItem__content-head">
           <div className="head-user">
-            <img className="img-user" src={user.avatar} alt="#" />
+            <img
+              className="img-user"
+              src={userAvatar ? pathAvatar : emptyAvatar}
+              alt="#"
+            />
             <div className="head-user__title">
               <h5 className="base-subtitle">{userName}</h5>
               <span className="base-subtitle">

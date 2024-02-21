@@ -66,7 +66,7 @@ const Dropdown = ({ type, categories, text, selectIndex }) => {
         ) : (
           <div className="dropdown-content__tags">
             {Array.isArray(tags) &&
-              tags.map((itemTag) => {
+              tags.map((itemTag, index) => {
                 return (
                   <div
                     className="tags-item"
@@ -74,6 +74,7 @@ const Dropdown = ({ type, categories, text, selectIndex }) => {
                       setSelected(itemTag.name);
                       selectIndex(itemTag.id);
                     }}
+                    key={index}
                   >
                     #{itemTag.name}
                   </div>

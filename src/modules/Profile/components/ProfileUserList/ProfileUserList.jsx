@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getUserPosts } from "../../store/userSlice";
 
-const ProfileUserList = ({ userName }) => {
+const ProfileUserList = ({ userName, userAvatar }) => {
   const posts = useSelector(getUserPosts);
 
   return (
@@ -27,6 +27,7 @@ const ProfileUserList = ({ userName }) => {
                 <ProfileUserItem
                   newsData={news}
                   userName={userName}
+                  userAvatar={userAvatar}
                   key={index}
                 />
               </Link>

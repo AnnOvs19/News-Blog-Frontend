@@ -27,7 +27,7 @@ const ProfileUser = (props) => {
   return (
     <div>
       <ProfileUserHead />
-      <ProfileUserList userName={user.name} />
+      <ProfileUserList userName={user.name} userAvatar={user.avatar} />
       <MiniSliderList newsData={arrMiniSlider} />
     </div>
   );
