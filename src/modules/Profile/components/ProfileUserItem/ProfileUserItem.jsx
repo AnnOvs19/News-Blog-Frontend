@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { user } from "../../store/mockUser";
 
 import BaseButton from "../../../../ui/BaseButton/BaseButton";
@@ -7,10 +7,27 @@ import emptyAvatar from "../../../../assets/images/backgroundAvatar.jpg";
 import mockImg from "../../../../assets/images/backgroundNews.jpg";
 import Like from "../../../../assets/icons/Like.svg";
 import "./profileUserItem.scss";
+import { deletePost } from "../../api/deletePost";
+import { useDispatch } from "react-redux";
+import { deletePostUser } from "../../store/userSlice";
+import ModalNotice from "../../../../components/ModalNotice/ModalNotice";
 
 const ProfileUserItem = ({ newsData, userName, userAvatar }) => {
   const pathImage = `http://localhost:6868/${newsData.img}`;
   const pathAvatar = `http://localhost:6868/${userAvatar}`;
+
+  const dispatch = useDispatch();
+
+  function deleteItem() {
+    dispatch(deletePostUser(newsData.id));
+    deletePost(newsData.id)
+      .then((res) => {
+        alert(res.massage);
+      })
+      .catch((res) => {
+        alert(res.massage);
+      });
+  }
 
   return (
     <div className="profileUserItem">
@@ -44,7 +61,9 @@ const ProfileUserItem = ({ newsData, userName, userAvatar }) => {
         alt="#"
       />
       <div className="profileUserItem__buttons">
-        <BaseButton styles={"buttons-delete"}>Delete a post</BaseButton>
+        <BaseButton styles={"buttons-delete"} onClick={deleteItem}>
+          Delete a post
+        </BaseButton>
         <BaseButton styles={"buttons-edit"}>Edit the post</BaseButton>
       </div>
     </div>

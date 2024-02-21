@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "./profileUserList.scss";
 import ProfileUserItem from "../ProfileUserItem/ProfileUserItem";
 import { newsArray } from "../../../News/store/newsArray";
 import BaseButton from "../../../../ui/BaseButton/BaseButton";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { getUserPosts } from "../../store/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserPosts, setUserPosts } from "../../store/userSlice";
+import { fethGetPostsUser } from "../../api/fetchGetPostUser";
 
-const ProfileUserList = ({ userName, userAvatar }) => {
+const ProfileUserList = ({ userName, userAvatar, userId }) => {
   const posts = useSelector(getUserPosts);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fethGetPostsUser(userId)
+      .then((res) => {
+        dispatch(setUserPosts(res));
+      })
+      .catch((res) => alert(res.massage));
+  }, [dispatch]);
 
   return (
     <div className="profileUserList">
@@ -23,14 +33,14 @@ const ProfileUserList = ({ userName, userAvatar }) => {
         {posts.length > 0 ? (
           posts?.map((news, index) => {
             return (
-              <Link to={`/post/${news.id}`} key={index}>
-                <ProfileUserItem
-                  newsData={news}
-                  userName={userName}
-                  userAvatar={userAvatar}
-                  key={index}
-                />
-              </Link>
+              // <Link to={`/post/${news.id}`} key={index}>
+              <ProfileUserItem
+                newsData={news}
+                userName={userName}
+                userAvatar={userAvatar}
+                key={index}
+              />
+              // </Link>
             );
           })
         ) : (

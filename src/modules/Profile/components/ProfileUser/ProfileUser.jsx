@@ -7,7 +7,7 @@ import MiniSliderList from "../../../../components/MiniSlider/MiniSliderList/Min
 import { newsArray } from "../../../News/store/newsArray";
 import { getUserData, setUserPosts } from "../../store/userSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { fethGetPostUser } from "../../api/fetchGetPostUser";
+import { fethGetPostsUser } from "../../api/fetchGetPostUser";
 
 const ProfileUser = (props) => {
   //С помощью редакса или бэка сделать фильтрацию новостей в слайдерах
@@ -17,7 +17,7 @@ const ProfileUser = (props) => {
   const user = useSelector(getUserData);
 
   useEffect(() => {
-    fethGetPostUser(user.id)
+    fethGetPostsUser(user.id)
       .then((res) => {
         dispatch(setUserPosts(res));
       })
@@ -27,7 +27,11 @@ const ProfileUser = (props) => {
   return (
     <div>
       <ProfileUserHead />
-      <ProfileUserList userName={user.name} userAvatar={user.avatar} />
+      <ProfileUserList
+        userName={user.name}
+        userAvatar={user.avatar}
+        userId={user.id}
+      />
       <MiniSliderList newsData={arrMiniSlider} />
     </div>
   );

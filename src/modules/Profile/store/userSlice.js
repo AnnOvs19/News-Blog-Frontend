@@ -21,10 +21,14 @@ export const userSlice = createSlice({
     setUserPosts: (state, action) =>{
       state.userPosts = action.payload;
     },
+
+    deletePostUser: (state, action) => {
+      state.userPosts = state.userPosts.filter((item)=>item.id != action.payload)
+    }
   }
 });
 
-export const { auth, setUser, setUserPosts } = userSlice.actions;
+export const { auth, setUser, setUserPosts, deletePostUser } = userSlice.actions;
 
 export const getAuth = (state) => state.userSlice.isAuth;
 
