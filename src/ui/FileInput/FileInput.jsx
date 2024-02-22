@@ -8,12 +8,14 @@ const FileInput = ({
   onChange,
   disabled,
   accept,
+  name,
   ...props
 }) => {
   return (
     <div>
       <label htmlFor="containedButton-file" className="fileInput">
         <input
+          name={name}
           type="file"
           value={value}
           accept={accept}

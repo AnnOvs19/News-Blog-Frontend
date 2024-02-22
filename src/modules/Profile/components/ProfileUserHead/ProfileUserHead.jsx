@@ -51,8 +51,7 @@ const ProfileUserHead = () => {
 
           <p className="base-subtitle">{user.email}</p>
           <span className="base-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor.
+            {user.status ? user.status : "The user has not added his status"}
           </span>
 
           <BaseButton onClick={logOut}>Logout</BaseButton>
