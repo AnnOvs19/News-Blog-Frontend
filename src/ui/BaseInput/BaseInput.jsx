@@ -18,9 +18,14 @@ const BaseInput = ({
           ? `${styles} baseInput ${invalid ? "invalid" : ""}`
           : `${invalid ? "invalid" : ""} baseInput`
       }
-      {...props}
     >
-      <input type={type} name={name} placeholder={placeholder} value={value} />
+      <input
+        type={type}
+        name={name}
+        placeholder={placeholder}
+        value={value}
+        {...props}
+      />
     </div>
   );
 };

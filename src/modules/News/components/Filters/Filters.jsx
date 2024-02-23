@@ -6,11 +6,17 @@ import BaseButton from "../../../../ui/BaseButton/BaseButton";
 import Dropdown from "../../../../components/Dropdown/Dropdown";
 import { fetchGetTypes } from "../../api/fetchGetTypes";
 import { useDispatch } from "react-redux";
-import { filterTagPosts, loadTags } from "../../store/newsSlise";
+import {
+  filterSearchPosts,
+  filterTagPosts,
+  loadTags
+} from "../../store/newsSlise";
 
 const Filters = () => {
   const dispatch = useDispatch();
+
   const [tags, setTags] = useState(null);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     fetchGetTypes().then((res) => {
@@ -23,6 +29,10 @@ const Filters = () => {
     dispatch(filterTagPosts(id));
   }
 
+  function searchNews(value) {
+    dispatch(filterSearchPosts(value));
+  }
+
   return (
     <div className="filters">
       <div className="filters-box">
@@ -32,6 +42,7 @@ const Filters = () => {
             placeholder="Enter your query in the search bar"
             type={"text"}
             name={"search"}
+            onChange={(event) => searchNews(event.target.value)}
           />
           <BaseButton styles={"filters-box__search-button"}>Search</BaseButton>
         </div>
