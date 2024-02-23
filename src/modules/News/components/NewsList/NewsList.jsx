@@ -17,13 +17,21 @@ const NewsList = () => {
   return (
     <div className="newsList">
       <div className="newsList__array">
-        {posts?.map((news, index) => {
-          return (
-            <Link to={`/post/${news.id}`} key={index}>
-              <NewsItem newsData={news} key={index} />
-            </Link>
-          );
-        })}
+        {filterTags.length > 0
+          ? filterTags?.map((news, index) => {
+              return (
+                <Link to={`/post/${news.id}`} key={index}>
+                  <NewsItem newsData={news} key={index} />
+                </Link>
+              );
+            })
+          : posts?.map((news, index) => {
+              return (
+                <Link to={`/post/${news.id}`} key={index}>
+                  <NewsItem newsData={news} key={index} />
+                </Link>
+              );
+            })}
       </div>
     </div>
   );
