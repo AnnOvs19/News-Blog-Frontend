@@ -5,17 +5,26 @@ import BaseInput from "../../../../ui/BaseInput/BaseInput";
 import BaseButton from "../../../../ui/BaseButton/BaseButton";
 import Dropdown from "../../../../components/Dropdown/Dropdown";
 import { fetchGetTypes } from "../../api/fetchGetTypes";
-import { useDispatch } from "react-redux";
-import { loadTags } from "../../store/newsSlise";
+import { useDispatch, useSelector } from "react-redux";
+import { filterTagPosts, getTagPosts, loadTags } from "../../store/newsSlise";
 
 const Filters = () => {
   const dispatch = useDispatch();
+  const filterTags = useSelector(getTagPosts);
+  const [tags, setTags] = useState(null);
 
   useEffect(() => {
     fetchGetTypes().then((res) => {
       dispatch(loadTags(res));
     });
   }, []);
+
+  function selectedTags(id) {
+    setTags(id);
+    // console.log(id);
+    dispatch(filterTagPosts(id));
+    console.log(filterTags);
+  }
 
   return (
     <div className="filters">
@@ -31,7 +40,11 @@ const Filters = () => {
         </div>
         <div className="filters-box__dropdown">
           <Dropdown type={0} text={"Sorting by date"} />
-          <Dropdown type={1} text={"Sorting by tags"} />
+          <Dropdown
+            type={1}
+            text={"Sorting by tags"}
+            selectIndex={selectedTags}
+          />
         </div>
       </div>
     </div>
