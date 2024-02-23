@@ -1,25 +1,29 @@
 import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+import { useDispatch, useSelector } from "react-redux";
 
-import "./editProfileForm.scss";
-import avatarEmpty from "../../../../assets/images/backgroundAvatar.jpg";
+import { getUserData, setUser } from "../../../Profile/store/userSlice";
+import { updateUser } from "../../api/updateUser";
+
 import BaseInput from "../../../../ui/BaseInput/BaseInput";
 import FileInput from "../../../../ui/FileInput/FileInput";
 import BaseButton from "../../../../ui/BaseButton/BaseButton";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { getUserData } from "../../../Profile/store/userSlice";
-import { updateUser } from "../../api/updateUser";
-import { checkToken } from "../../../Profile/api/checkToken";
 
-const EditProfileForm = (props) => {
+import avatarEmpty from "../../../../assets/images/backgroundAvatar.jpg";
+
+import "./editProfileForm.scss";
+
+const EditProfileForm = () => {
   const user = useSelector(getUserData);
+  const dispatch = useDispatch();
+  const nav = useNavigate();
 
   const [avatar, setAvatar] = useState("");
   const [imageUser, setImageUser] = useState("");
 
   const pathAvatar = `http://localhost:6868/${user.avatar}`;
 
-  console.log(user.status);
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [status, setStatus] = useState(user.status);
@@ -28,26 +32,29 @@ const EditProfileForm = (props) => {
   const [emailDirty, setEmailDirty] = useState(false);
   const [statusDirty, setStatusDirty] = useState(false);
 
-  const [nameError, setNameError] = useState(
-    "Строка с именем пользователя не может быть пустой"
-  );
-  const [emailError, setEmailError] = useState(
-    "Строка с почтой не может быть пустой"
-  );
-  const [statusError, setStatusError] = useState(
-    "Строка с поролем не может быть пустой"
-  );
+  const [nameError, setNameError] = useState();
+  const [emailError, setEmailError] = useState();
+  const [statusError, setStatusError] = useState();
 
-  const [disable, setDisable] = useState(true);
+  const [disable, setDisable] = useState(false);
 
-  const [formValid, setFormValid] = useState(false);
+  const [formValid, setFormValid] = useState(true);
 
   async function submitForm(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
+
     if (formValid) {
       formData.append("id", user.id);
-      updateUser(formData).then((res) => console.log(res));
+
+      if (user.email != email) {
+        formData.append("email", email);
+      }
+
+      updateUser(formData).then((res) => {
+        dispatch(setUser(jwtDecode(res.token)));
+        nav("/profile");
+      });
     }
   }
 
@@ -84,7 +91,7 @@ const EditProfileForm = (props) => {
     if (e.target.value.length > 100) {
       setStatusError("Статус должен быть не более 100 символов");
       if (!e.target.value) {
-        setStatusError("Строка с поролем не может быть пустой");
+        setStatusError("Строка с статусом не может быть пустой");
       }
     } else {
       setStatusError("");
@@ -138,7 +145,7 @@ const EditProfileForm = (props) => {
               <img src={user.avatar ? pathAvatar : avatarEmpty} alt="#" />
             )}
 
-            <BaseButton styles={"avatarBtn"}>
+            <BaseButton styles={"avatarBtn"} type="button">
               <FileInput
                 accept="image/*"
                 onChange={handleAddAvatar}
@@ -166,8 +173,6 @@ const EditProfileForm = (props) => {
               </span>
             </div>
 
-            {/* Макс должен сделать бэк для емэйла */}
-
             <div className="info">
               <p>Your mail</p>
               <BaseInput
@@ -175,7 +180,6 @@ const EditProfileForm = (props) => {
                 onBlur={(e) => blurHandler(e)}
                 value={email}
                 invalid={emailDirty && emailError}
-                name={"email"}
                 type={"email"}
                 placeholder={"E-mail"}
               />
@@ -201,7 +205,7 @@ const EditProfileForm = (props) => {
           </div>
         </div>
         <div className="editProfileForm-box__bottom">
-          <BaseButton styles={"cancelBtn"}>
+          <BaseButton styles={"cancelBtn"} type="button">
             <Link to={"/profile"}>Cancel</Link>
           </BaseButton>
 
