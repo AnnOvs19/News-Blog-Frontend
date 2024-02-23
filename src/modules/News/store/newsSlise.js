@@ -19,7 +19,7 @@ export const newsSlice = createSlice({
     },
 
     filterTagPosts: (state, action) => {
-      state.categoryPosts = state.posts.filter(
+      state.tagPosts = state.posts.filter(
         (item) => item.type_new.id === action.payload
       );
     }

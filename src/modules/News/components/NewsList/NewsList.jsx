@@ -13,7 +13,6 @@ const NewsList = () => {
   const filterTags = useSelector(getTagPosts);
 
   console.log(filterTags);
-  console.log(posts);
 
   return (
     <div className="newsList">

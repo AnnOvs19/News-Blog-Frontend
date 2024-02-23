@@ -5,12 +5,11 @@ import BaseInput from "../../../../ui/BaseInput/BaseInput";
 import BaseButton from "../../../../ui/BaseButton/BaseButton";
 import Dropdown from "../../../../components/Dropdown/Dropdown";
 import { fetchGetTypes } from "../../api/fetchGetTypes";
-import { useDispatch, useSelector } from "react-redux";
-import { filterTagPosts, getTagPosts, loadTags } from "../../store/newsSlise";
+import { useDispatch } from "react-redux";
+import { filterTagPosts, loadTags } from "../../store/newsSlise";
 
 const Filters = () => {
   const dispatch = useDispatch();
-  const filterTags = useSelector(getTagPosts);
   const [tags, setTags] = useState(null);
 
   useEffect(() => {
@@ -21,9 +20,7 @@ const Filters = () => {
 
   function selectedTags(id) {
     setTags(id);
-    // console.log(id);
     dispatch(filterTagPosts(id));
-    console.log(filterTags);
   }
 
   return (
