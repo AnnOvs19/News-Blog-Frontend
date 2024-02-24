@@ -1,207 +1,221 @@
 .editProfileForm {
-    width: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(244, 240, 248);
+
+  &-box {
+    margin-top: 135px;
+    margin-bottom: 100px;
+    max-width: 1200px;
+    width: 1200px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background-color: rgb(244, 240, 248);
+    flex-direction: column;
+    background-color: white;
 
-    &-box {
-        margin-top: 135px;
-        margin-bottom: 100px;
-        max-width: 1200px;
-        width: 1200px;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        background-color: white;
-
-        h2 {
-            font-size: 40px;
-            margin-top: 50px;
-            color: #232536;
-        }
-
-        &__content {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 40px;
-            padding: 50px;
-
-            &-img {
-                display: flex;
-                flex-direction: column;
-
-                img {
-                    width: 196px;
-                }
-
-            }
-
-            .avatarBtn {
-                margin-top: 15px;
-                background-color: #232536;
-                color: white;
-
-                &:hover {
-                    background: #FFD050;
-                    color: #11121a;
-                }
-
-
-            }
-
-            &-info {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                gap: 20px;
-            }
-        }
-
-        &__bottom {
-            display: flex;
-            flex-direction: row;
-            width: 630px;
-            padding: 0 50px;
-            margin-bottom: 50px;
-            gap: 30px;
-
-            .saveBtn {
-                width: 100%;
-                background-color: #232536;
-                color: white;
-
-                &:hover {
-                    background: #FFD050;
-                    color: #11121a;
-                }
-            }
-        }
-
+    h2 {
+      font-size: 40px;
+      margin-top: 50px;
+      color: #232536;
     }
+
+    &__content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 40px;
+      padding: 50px;
+
+      &-img {
+        display: flex;
+        flex-direction: column;
+
+        img {
+          width: 196px;
+        }
+      }
+
+      .avatarBtn {
+        padding: 0;
+        margin-top: 15px;
+        background-color: #232536;
+        color: white;
+
+        div {
+          padding: 15px 5px;
+        }
+
+        input {
+          cursor: pointer;
+          width: 196px;
+          height: 51px;
+          top: -14px;
+          right: -52px;
+        }
+
+        &:hover {
+          background: #ffd050;
+          color: #11121a;
+        }
+      }
+
+      &-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+      }
+    }
+
+    &__bottom {
+      display: flex;
+      flex-direction: row;
+      width: 630px;
+      padding: 0 50px;
+      margin-bottom: 50px;
+      gap: 30px;
+
+      .saveBtn {
+        width: 100%;
+        background-color: #232536;
+        color: white;
+
+        &:hover {
+          background: #ffd050;
+          color: #11121a;
+        }
+      }
+
+      .cancelBtn {
+        padding: 0;
+
+        a {
+          width: 100%;
+          display: flex;
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
 }
 
 .info {
-    p {
-        font-size: 15px;
-        margin-bottom: 8px;
-        font-weight: 500;
-        color: #232536;
-    }
+  p {
+    font-size: 15px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #232536;
+  }
 }
 
-
 @media (max-width: 1250px) {
-    .editProfileForm {
-        &-box {
-            max-width: 700px;
-            width: 700px;
+  .editProfileForm {
+    &-box {
+      max-width: 700px;
+      width: 700px;
 
-            &__content {
-                padding: 40px;
-            }
+      &__content {
+        padding: 40px;
+      }
 
-            &__bottom {
-                gap: 20px;
-            }
-
-        }
+      &__bottom {
+        gap: 20px;
+      }
     }
+  }
 }
 
 @media (max-width: 800px) {
-    .editProfileForm {
-        &-box {
-            max-width: 490px;
-            width: 490px;
+  .editProfileForm {
+    &-box {
+      max-width: 490px;
+      width: 490px;
 
-            &__content {
-                flex-direction: column;
-                padding: 30px;
+      &__content {
+        flex-direction: column;
+        padding: 30px;
 
-                &-img {
-                    width: 100%;
+        &-img {
+          width: 100%;
 
-                    img {
-                        width: 390px;
-                    }
-
-                }
-
-                &-info {
-                    gap: 10px;
-                }
-            }
-
-            &__bottom {
-                display: flex;
-                flex-direction: column;
-                width: 80%;
-                gap: 10px;
-            }
-
+          img {
+            width: 390px;
+          }
         }
+
+        &-info {
+          gap: 10px;
+        }
+      }
+
+      &__bottom {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        gap: 10px;
+      }
     }
+  }
 }
 
 @media (max-width: 500px) {
-    .editProfileForm {
-        &-box {
-            max-width: 340px;
-            width: 340px;
-            margin-bottom: 60px;
+  .editProfileForm {
+    &-box {
+      max-width: 340px;
+      width: 340px;
+      margin-bottom: 60px;
 
-            h2 {
-                font-size: 32px;
-                margin-top: 40px;
+      h2 {
+        font-size: 32px;
+        margin-top: 40px;
+      }
 
-            }
-
-            &__content {
-                &-img {
-                    img {
-                        width: 280px;
-                    }
-
-                }
-            }
+      &__content {
+        &-img {
+          img {
+            width: 280px;
+          }
         }
+      }
     }
+  }
 }
 
-@media (max-width: 380px) {}
+@media (max-width: 380px) {
+}
 
 @media (max-width: 320px) {
-    .editProfileForm {
-        &-box {
-            max-width: 265px;
-            width: 265px;
+  .editProfileForm {
+    &-box {
+      max-width: 265px;
+      width: 265px;
 
-            h2 {
-                font-size: 28px;
-                margin-top: 25px;
-            }
+      h2 {
+        font-size: 28px;
+        margin-top: 25px;
+      }
 
-            &__content {
-                flex-direction: column;
-                padding: 20px;
-                gap: 20px;
+      &__content {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
 
-                &-img {
-                    img {
-                        width: 234px;
-                    }
-
-                }
-            }
-
-            &__bottom {
-                width: 88%;
-                padding: 0px;
-
-            }
+        &-img {
+          img {
+            width: 234px;
+          }
         }
+      }
+
+      &__bottom {
+        width: 88%;
+        padding: 0px;
+      }
     }
+  }
 }

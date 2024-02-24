@@ -42,6 +42,7 @@ const Dropdown = ({ type, categories, text, selectIndex }) => {
               className="categories-item"
               onClick={() => {
                 setSelected("Show new posts");
+                selectIndex(1);
               }}
             >
               Show new posts
@@ -50,6 +51,7 @@ const Dropdown = ({ type, categories, text, selectIndex }) => {
               className="categories-item"
               onClick={() => {
                 setSelected("Show old posts");
+                selectIndex(2);
               }}
             >
               Show old posts
@@ -58,6 +60,7 @@ const Dropdown = ({ type, categories, text, selectIndex }) => {
               className="categories-item"
               onClick={() => {
                 setSelected("Popular posts");
+                selectIndex(3);
               }}
             >
               Popular posts
@@ -66,7 +69,7 @@ const Dropdown = ({ type, categories, text, selectIndex }) => {
         ) : (
           <div className="dropdown-content__tags">
             {Array.isArray(tags) &&
-              tags.map((itemTag) => {
+              tags.map((itemTag, index) => {
                 return (
                   <div
                     className="tags-item"
@@ -74,6 +77,7 @@ const Dropdown = ({ type, categories, text, selectIndex }) => {
                       setSelected(itemTag.name);
                       selectIndex(itemTag.id);
                     }}
+                    key={index}
                   >
                     #{itemTag.name}
                   </div>
