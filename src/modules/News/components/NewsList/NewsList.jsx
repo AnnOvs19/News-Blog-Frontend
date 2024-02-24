@@ -16,7 +16,7 @@ const NewsList = () => {
   return (
     <div className="newsList">
       <div className="newsList__array">
-        {/* {filterTags.length > 0
+        {filterTags.length > 0
           ? filterTags?.map((news, index) => {
               return (
                 <Link to={`/post/${news.id}`} key={index}>
@@ -30,14 +30,15 @@ const NewsList = () => {
                   <NewsItem newsData={news} key={index} />
                 </Link>
               );
-            })} */}
-        {filterSearch?.map((news, index) => {
+            })}
+
+        {/* {filterSearch?.map((news, index) => {
           return (
             <Link to={`/post/${news.id}`} key={index}>
               <NewsItem newsData={news} key={index} />
             </Link>
           );
-        })}
+        })} */}
       </div>
     </div>
   );

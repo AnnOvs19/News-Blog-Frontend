@@ -42,6 +42,7 @@ const Dropdown = ({ type, categories, text, selectIndex }) => {
               className="categories-item"
               onClick={() => {
                 setSelected("Show new posts");
+                selectIndex(1);
               }}
             >
               Show new posts
@@ -50,6 +51,7 @@ const Dropdown = ({ type, categories, text, selectIndex }) => {
               className="categories-item"
               onClick={() => {
                 setSelected("Show old posts");
+                selectIndex(2);
               }}
             >
               Show old posts
@@ -58,6 +60,7 @@ const Dropdown = ({ type, categories, text, selectIndex }) => {
               className="categories-item"
               onClick={() => {
                 setSelected("Popular posts");
+                selectIndex(3);
               }}
             >
               Popular posts
