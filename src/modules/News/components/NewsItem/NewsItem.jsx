@@ -1,5 +1,8 @@
 import React from "react";
+
 import mockImg from "../../../../assets/images/backgroundNews.jpg";
+import like from "../../../../assets/icons/Like.svg";
+
 import "./newsItem.scss";
 
 const NewsItem = ({ newsData }) => {
@@ -18,6 +21,14 @@ const NewsItem = ({ newsData }) => {
         <h3 className="base-title">{newsData.title}</h3>
         <p className="base-text">{newsData.content.substring(0, 260)}...</p>
       </div>
+      {newsData.likes.length > 0 ? (
+        <div className="newsItem__like">
+          <img src={like} alt="#" />
+          <p>{newsData.likes.length}</p>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

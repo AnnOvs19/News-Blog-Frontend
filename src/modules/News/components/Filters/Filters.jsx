@@ -7,20 +7,27 @@ import Dropdown from "../../../../components/Dropdown/Dropdown";
 import { fetchGetTypes } from "../../api/fetchGetTypes";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  clearFiltersSearch,
   filterSearchPosts,
   filterTagPosts,
   getPosts,
+  getSearchPosts,
+  getTagPosts,
   loadPosts,
+  loadSearchPosts,
+  loadTagPosts,
   loadTags
 } from "../../store/newsSlise";
 
 const Filters = () => {
-  const posts = useSelector(getPosts);
+  const allPosts = useSelector(getPosts);
+  const tagPosts = useSelector(getTagPosts);
+  const searchPosts = useSelector(getSearchPosts);
 
   const dispatch = useDispatch();
 
   const [tags, setTags] = useState(null);
-  const [searchValue, setSearchValue] = useState("");
+  // const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     fetchGetTypes().then((res) => {
@@ -30,45 +37,66 @@ const Filters = () => {
 
   function selectedTags(id) {
     setTags(id);
+    dispatch(clearFiltersSearch());
     dispatch(filterTagPosts(id));
   }
 
   function searchNews(value) {
+    dispatch(filterTagPosts());
     dispatch(filterSearchPosts(value));
   }
 
-  function sortNewPosts() {
-    const copyPosts = [...posts];
-    const sortArrayPosts1 = copyPosts.sort((a, b) => b.id - a.id);
-    dispatch(loadPosts(sortArrayPosts1));
+  function sortNewPosts(allPosts, tagPosts, searchPosts) {
+    const sortArrayPosts = allPosts.sort((a, b) => b.id - a.id);
+    const sortArrayTagPosts = tagPosts.sort((a, b) => b.id - a.id);
+    const sortArraySearchPosts = searchPosts.sort((a, b) => b.id - a.id);
+
+    dispatch(loadPosts(sortArrayPosts));
+    dispatch(loadTagPosts(sortArrayTagPosts));
+    dispatch(loadSearchPosts(sortArraySearchPosts));
   }
 
-  function sortOldPosts() {
-    const copyPosts = [...posts];
-    const sortArrayPosts2 = copyPosts.sort((a, b) => a.id - b.id);
-    dispatch(loadPosts(sortArrayPosts2));
+  function sortOldPosts(allPosts, tagPosts, searchPosts) {
+    const sortArrayPosts = allPosts.sort((a, b) => a.id - b.id);
+    const sortArrayTagPosts = tagPosts.sort((a, b) => a.id - b.id);
+    const sortArraySearchPosts = searchPosts.sort((a, b) => a.id - b.id);
+
+    dispatch(loadPosts(sortArrayPosts));
+    dispatch(loadTagPosts(sortArrayTagPosts));
+    dispatch(loadSearchPosts(sortArraySearchPosts));
   }
 
-  function sortPopularPosts() {
-    const copyPosts = [...posts];
-    const sortArrayPosts3 = copyPosts.sort(
+  function sortPopularPosts(allPosts, tagPosts, searchPosts) {
+    const sortArrayPosts = allPosts.sort(
       (a, b) => b.likes.length - a.likes.length
     );
-    dispatch(loadPosts(sortArrayPosts3));
+    const sortArrayTagPosts = tagPosts.sort(
+      (a, b) => b.likes.length - a.likes.length
+    );
+    const sortArraySearchPosts = searchPosts.sort(
+      (a, b) => b.likes.length - a.likes.length
+    );
+
+    dispatch(loadPosts(sortArrayPosts));
+    dispatch(loadTagPosts(sortArrayTagPosts));
+    dispatch(loadSearchPosts(sortArraySearchPosts));
   }
 
   function checkCategory(id) {
+    const copyAllPosts = [...allPosts];
+    const copyTagPosts = [...tagPosts];
+    const copySearchPosts = [...searchPosts];
     switch (id) {
       case 1:
-        sortNewPosts();
+        sortNewPosts(copyAllPosts, copyTagPosts, copySearchPosts);
         break;
 
       case 2:
-        sortOldPosts();
+        sortOldPosts(copyAllPosts, copyTagPosts, copySearchPosts);
         break;
 
       case 3:
-        sortPopularPosts();
+        sortPopularPosts(copyAllPosts, copyTagPosts, copySearchPosts);
         break;
 
       default:
@@ -82,7 +110,7 @@ const Filters = () => {
         <div className="filters-box__search">
           <BaseInput
             styles={"filters-box__search-input"}
-            placeholder="Enter your query in the search bar"
+            placeholder="Search through all publications"
             type={"text"}
             name={"search"}
             onChange={(event) => searchNews(event.target.value)}
