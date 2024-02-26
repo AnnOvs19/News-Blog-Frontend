@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import NewsItem from "../NewsItem/NewsItem";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getPosts, getSearchPosts, getTagPosts } from "../../store/newsSlise";
 
 import "./newsList.scss";
@@ -24,7 +24,7 @@ const NewsList = () => {
                 </Link>
               );
             })
-          : posts?.map((news, index) => {
+          : filterSearch?.map((news, index) => {
               return (
                 <Link to={`/post/${news.id}`} key={index}>
                   <NewsItem newsData={news} key={index} />
@@ -32,13 +32,15 @@ const NewsList = () => {
               );
             })}
 
-        {/* {filterSearch?.map((news, index) => {
-          return (
-            <Link to={`/post/${news.id}`} key={index}>
-              <NewsItem newsData={news} key={index} />
-            </Link>
-          );
-        })} */}
+        {filterSearch.length == 0 &&
+          filterTags.length == 0 &&
+          posts?.map((news, index) => {
+            return (
+              <Link to={`/post/${news.id}`} key={index}>
+                <NewsItem newsData={news} key={index} />
+              </Link>
+            );
+          })}
       </div>
     </div>
   );

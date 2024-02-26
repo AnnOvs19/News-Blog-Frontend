@@ -29,12 +29,26 @@ export const newsSlice = createSlice({
       state.searchPosts = state.posts.filter((item) => {
         return item.title.toLowerCase().includes(action.payload.toLowerCase());
       });
+    },
+
+    clearFiltersSearch: (state, action) => {
+      state.searchPosts = [];
+    },
+
+    clearFiltersTag: (state, action) => {
+      state.tagPosts = [];
     }
   }
 });
 
-export const { loadPosts, loadTags, filterTagPosts, filterSearchPosts } =
-  newsSlice.actions;
+export const {
+  loadPosts,
+  loadTags,
+  filterTagPosts,
+  filterSearchPosts,
+  clearFiltersSearch,
+  clearFiltersTag
+} = newsSlice.actions;
 
 export const getPosts = (state) => state.newsSlice.posts;
 

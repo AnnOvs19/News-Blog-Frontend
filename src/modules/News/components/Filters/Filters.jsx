@@ -7,6 +7,7 @@ import Dropdown from "../../../../components/Dropdown/Dropdown";
 import { fetchGetTypes } from "../../api/fetchGetTypes";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  clearFiltersSearch,
   filterSearchPosts,
   filterTagPosts,
   getPosts,
@@ -30,10 +31,12 @@ const Filters = () => {
 
   function selectedTags(id) {
     setTags(id);
+    dispatch(clearFiltersSearch());
     dispatch(filterTagPosts(id));
   }
 
   function searchNews(value) {
+    dispatch(filterTagPosts());
     dispatch(filterSearchPosts(value));
   }
 
