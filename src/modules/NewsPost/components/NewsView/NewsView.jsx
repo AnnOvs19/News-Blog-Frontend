@@ -5,6 +5,7 @@ import like from "../../../../assets/icons/Like.svg";
 
 const NewsView = ({ data }) => {
   const pathImage = `http://localhost:6868/${data.img}`;
+  const arrStr = data.content.split("\n").map((str) => <p>{str}</p>);
 
   return (
     <div className="newsPost-box__content">
@@ -22,8 +23,9 @@ const NewsView = ({ data }) => {
       </div>
 
       <h3 className="base-title">{data.title}</h3>
+      <div className="base-text">{arrStr}</div>
 
-      <p className="base-text">{data.content}...</p>
+      {/* <p className="base-text">{data.content}...</p> */}
     </div>
   );
 };

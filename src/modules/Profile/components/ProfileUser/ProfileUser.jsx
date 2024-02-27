@@ -19,7 +19,7 @@ const ProfileUser = (props) => {
   useEffect(() => {
     fethGetPostsUser(user.id)
       .then((res) => {
-        dispatch(setUserPosts(res));
+        dispatch(setUserPosts(res.reverse()));
       })
       .catch((res) => alert(res.massage));
   }, []);

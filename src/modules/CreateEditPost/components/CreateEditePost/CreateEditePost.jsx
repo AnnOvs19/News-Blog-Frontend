@@ -10,6 +10,7 @@ import BackgroundNews from "../../../../assets/images/backgroundNews.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getUserData } from "../../../Profile/store/userSlice";
+import { createPost } from "../../api/createPost";
 
 const CreateEditePost = (props) => {
   const user = useSelector(getUserData);
@@ -70,10 +71,9 @@ const CreateEditePost = (props) => {
     }
   }, [titleError]);
 
-  async function createPost(e) {
+  function createFormData(e) {
     e.preventDefault();
 
-    const URL = "http://localhost:6868/api/post";
     const formData = new FormData(e.target);
     //Данные о id юзера получаем из стора, typeId новости из дропдауна
     formData.append("userId", user.id);
@@ -81,16 +81,10 @@ const CreateEditePost = (props) => {
     formData.append("img", imgData);
 
     if (formValid) {
-      await fetch(URL, {
-        method: "POST",
-        body: formData
-      })
-        .then((response) => response.json())
-        .then((res) => {
-          console.log(res);
-          nav("/profile");
-        })
-        .catch((res) => {});
+      createPost(formData).then((res) => {
+        console.log(res);
+        nav("/profile");
+      });
     }
   }
 
@@ -101,7 +95,7 @@ const CreateEditePost = (props) => {
         <div className="createArticle-box__content">
           <form
             onSubmit={(e) => {
-              createPost(e);
+              createFormData(e);
             }}
             className="createArticle-box__content-info"
           >
