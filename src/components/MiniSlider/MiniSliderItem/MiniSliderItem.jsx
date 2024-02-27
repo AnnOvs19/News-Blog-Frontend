@@ -16,7 +16,7 @@ const MiniSliderItem = ({ newsData }) => {
             | {new Date(newsData.createdAt).toLocaleDateString()}
           </span>
         </div>
-        <h1 className="base-title">{newsData.title}</h1>
+        <h1 className="base-title">{newsData.title.substring(0, 33)}...</h1>
         <p className="base-text">{newsData.content.substring(0, 140)}...</p>
       </div>
     </div>

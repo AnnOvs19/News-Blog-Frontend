@@ -8,10 +8,12 @@ import { newsArray } from "../../../News/store/newsArray";
 import { getUserData, setUserPosts } from "../../store/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { fethGetPostsUser } from "../../api/fetchGetPostUser";
+import { getPosts } from "../../../News/store/newsSlise";
 
 const ProfileUser = (props) => {
-  //С помощью редакса или бэка сделать фильтрацию новостей в слайдерах
-  const arrMiniSlider = newsArray.filter((item, index) => index < 9);
+  const allPosts = useSelector(getPosts);
+
+  const arrMiniSlider = allPosts.filter((item, index) => index < 30);
 
   const dispatch = useDispatch();
   const user = useSelector(getUserData);

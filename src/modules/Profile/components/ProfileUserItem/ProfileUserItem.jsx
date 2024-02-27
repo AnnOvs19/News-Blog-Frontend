@@ -52,7 +52,7 @@ const ProfileUserItem = ({ newsData, userName, userAvatar }) => {
             <span>{newsData.likes.length}</span>
           </div>
         </div>
-        <h3 className="base-title">{newsData.title.substring(0, 48)}...</h3>
+        <h3 className="base-title">{newsData.title.substring(0, 47)}...</h3>
 
         <p className="base-text">{newsData.content.substring(0, 230)}...</p>
       </div>

@@ -9,7 +9,7 @@ const BigSliderItem = ({ newsData }) => {
   return (
     <div className="bigSlider-item">
       <div className="bigSlider-item__content">
-        <h1>{newsData.title}</h1>
+        <h1>{newsData.title.substring(0, 45)}</h1>
         <div>
           <span className="base-text">By</span>
           <h5 className="base-subtitle">{newsData.user.name}</h5>
