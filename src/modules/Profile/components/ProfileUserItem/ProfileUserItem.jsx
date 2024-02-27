@@ -66,7 +66,7 @@ const ProfileUserItem = ({ newsData, userName, userAvatar }) => {
         <BaseButton styles={"buttons-delete"} onClick={deleteItem}>
           Delete a post
         </BaseButton>
-        <Link to={"/article"}>
+        <Link to={`/article/${newsData.id}`}>
           <BaseButton styles={"buttons-edit"}>Edit the post</BaseButton>
         </Link>
       </div>
