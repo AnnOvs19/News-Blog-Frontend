@@ -7,8 +7,6 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
 const BigSliderList = ({ newsData }) => {
-  const [pages, setPages] = useState(newsData);
-
   return (
     <div className="bigSliderList">
       <Swiper
@@ -20,7 +18,7 @@ const BigSliderList = ({ newsData }) => {
         loop={true}
         speed={1500}
       >
-        {pages?.map((news, index) => {
+        {newsData?.map((news, index) => {
           return (
             <SwiperSlide key={index}>
               <BigSliderItem newsData={news} key={index} />

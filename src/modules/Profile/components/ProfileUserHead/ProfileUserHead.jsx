@@ -54,7 +54,9 @@ const ProfileUserHead = () => {
             {user.status ? user.status : "The user has not added his status"}
           </span>
 
-          <BaseButton onClick={logOut}>Logout</BaseButton>
+          <BaseButton styles={"logoutButton"} onClick={logOut}>
+            Logout
+          </BaseButton>
         </div>
       </div>
       <div className="profileUserHead-colorLine">

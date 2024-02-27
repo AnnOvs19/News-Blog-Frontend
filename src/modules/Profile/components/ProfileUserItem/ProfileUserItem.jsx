@@ -49,11 +49,10 @@ const ProfileUserItem = ({ newsData, userName, userAvatar }) => {
           </div>
           <div className="head-like">
             <img className="img-like" src={Like} alt="#" />
-            {/* Колво лайков должно приходить с сервера, пока замокано */}
-            <span>455</span>
+            <span>{newsData.likes.length}</span>
           </div>
         </div>
-        <h3 className="base-title">{newsData.title}</h3>
+        <h3 className="base-title">{newsData.title.substring(0, 47)}...</h3>
 
         <p className="base-text">{newsData.content.substring(0, 230)}...</p>
       </div>

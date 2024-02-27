@@ -7,8 +7,11 @@ import {
   registration,
   registrationUser
 } from "../../../modules/Profile/api/registrationUser";
+import { useNavigate } from "react-router-dom";
 
 const Register = ({ setActive }) => {
+  const nav = useNavigate();
+
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
@@ -115,6 +118,7 @@ const Register = ({ setActive }) => {
             dispatch(setUser(res));
             //Пользователь авторизован!
             dispatch(auth(true));
+            nav("/");
             alert("Вы зарегестрированы!");
           }
         })
