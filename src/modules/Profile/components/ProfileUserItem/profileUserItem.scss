@@ -1,306 +1,302 @@
 .profileUserItem {
-    display: flex;
-    flex-direction: column;
-    padding: 70px;
-    border: 1px solid rgba(109, 110, 118, 0.577);
-    cursor: pointer;
-    transition: 0.4s;
-    gap: 25px;
+  display: flex;
+  flex-direction: column;
+  padding: 70px;
+  border: 1px solid rgba(109, 110, 118, 0.577);
+  cursor: pointer;
+  transition: 0.4s;
+  gap: 25px;
 
-    &__content {
-        &-head {
+  &__content {
+    &-head {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+
+      .head {
+        &-user {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 15px;
+
+          &__title {
             display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 25px;
-
-            .head {
-                &-user {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    gap: 15px;
-
-                    &__title {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: flex-start;
-                        gap: 10px;
-                    }
-                }
-
-                &-like {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    gap: 5px;
-                }
-            }
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+          }
         }
 
-        span {
-            font-size: 17px;
-            color: #6D6E76;
+        &-like {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 5px;
         }
-
-        h5 {
-            font-size: 20px;
-
-        }
-
-        h3 {
-            font-size: 40px;
-            line-height: 52px;
-            margin-bottom: 12px;
-        }
-
-        p {
-
-            font-size: 15px;
-            line-height: 27px;
-        }
+      }
     }
 
-    &__buttons {
-        margin-top: 15px;
-        display: flex;
-        justify-content: space-between;
-        gap: 30px;
-
-        .buttons {
-            &-edit {
-                background-color: #232536;
-                color: white;
-                width: 100%;
-
-                &:hover {
-                    background: #FFD050;
-                    color: #11121a;
-                }
-            }
-
-            &-delete {
-                background-color: #c94030;
-                color: white;
-                width: 100%;
-
-                &:hover {
-                    background: #FFD050;
-                    color: #11121a;
-                }
-            }
-        }
+    span {
+      font-size: 17px;
+      color: #6d6e76;
     }
+
+    h5 {
+      font-size: 20px;
+    }
+
+    h3 {
+      font-size: 40px;
+      line-height: 52px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 27px;
+    }
+  }
+
+  &__buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+
+    a {
+      width: 100%;
+    }
+    .buttons {
+      &-edit {
+        background-color: #232536;
+        color: white;
+        width: 100%;
+
+        &:hover {
+          background: #ffd050;
+          color: #11121a;
+        }
+      }
+
+      &-delete {
+        background-color: #c94030;
+        color: white;
+        width: 100%;
+
+        &:hover {
+          background: #ffd050;
+          color: #11121a;
+        }
+      }
+    }
+  }
 }
 
 .img {
-    &-user {
-        max-width: 55px;
-    }
+  &-user {
+    max-width: 55px;
+  }
 
-    &-news {
-        max-width: 768px;
-    }
+  &-news {
+    max-width: 768px;
+  }
 
-    &-like {
-        max-width: 35px;
-    }
+  &-like {
+    max-width: 35px;
+  }
 }
 
 @media (max-width: 1250px) {
-    .profileUserItem {
-        padding: 50px;
+  .profileUserItem {
+    padding: 50px;
 
-        &__content {
-            &-head {
-                margin-bottom: 22px;
-            }
+    &__content {
+      &-head {
+        margin-bottom: 22px;
+      }
 
-            span {
-                font-size: 15px;
-            }
+      span {
+        font-size: 15px;
+      }
 
-            h5 {
-                font-size: 18px;
+      h5 {
+        font-size: 18px;
+      }
 
-            }
+      h3 {
+        font-size: 38px;
+        line-height: 50px;
+        margin-bottom: 12px;
+      }
+    }
+  }
 
-            h3 {
-                font-size: 38px;
-                line-height: 50px;
-                margin-bottom: 12px;
-            }
-
-        }
+  .img {
+    &-news {
+      max-width: 600px;
     }
 
-    .img {
-        &-news {
-            max-width: 600px;
-        }
-
-        &-like {
-            max-width: 30px;
-        }
+    &-like {
+      max-width: 30px;
     }
+  }
 }
 
 @media (max-width: 800px) {
-    .profileUserItem {
-        padding: 40px;
+  .profileUserItem {
+    padding: 40px;
 
-        &__content {
-            &-head {
-                margin-bottom: 15px;
+    &__content {
+      &-head {
+        margin-bottom: 15px;
 
-                .head {
-                    &-user {
-                        &__title {
-                            gap: 0px;
-                        }
-                    }
-                }
+        .head {
+          &-user {
+            &__title {
+              gap: 0px;
             }
-
-            span {
-                font-size: 13px;
-            }
-
-            h5 {
-                font-size: 14px;
-
-            }
-
-            h3 {
-                font-size: 29px;
-                line-height: 40px;
-            }
-
-            p {
-
-                font-size: 13px;
-                line-height: 26px;
-            }
+          }
         }
+      }
 
+      span {
+        font-size: 13px;
+      }
+
+      h5 {
+        font-size: 14px;
+      }
+
+      h3 {
+        font-size: 29px;
+        line-height: 40px;
+      }
+
+      p {
+        font-size: 13px;
+        line-height: 26px;
+      }
     }
 
-    .img {
-        &-user {
-            max-width: 45px;
-        }
-
-        &-news {
-            max-width: 410px;
-        }
-
-        &-like {
-            max-width: 20px;
-        }
+    &__buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
+  }
+
+  .img {
+    &-user {
+      max-width: 45px;
+    }
+
+    &-news {
+      max-width: 410px;
+    }
+
+    &-like {
+      max-width: 20px;
+    }
+  }
 }
 
 @media (max-width: 500px) {
-    .profileUserItem {
-        padding: 20px;
+  .profileUserItem {
+    padding: 20px;
 
-        &__content {
-            &-head {
-                margin-bottom: 14px;
-            }
+    &__content {
+      &-head {
+        margin-bottom: 14px;
+      }
 
-            span {
-                font-size: 12px;
-            }
+      span {
+        font-size: 12px;
+      }
 
-            h5 {
-                font-size: 12px;
+      h5 {
+        font-size: 12px;
+      }
 
-            }
+      h3 {
+        font-size: 22px;
+        line-height: 32px;
+      }
 
-            h3 {
-                font-size: 22px;
-                line-height: 32px;
-            }
-
-            p {
-
-                font-size: 12px;
-                line-height: 24px;
-            }
-        }
-
-        &__buttons {
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
+      p {
+        font-size: 12px;
+        line-height: 22px;
+      }
     }
 
-    .img {
-        &-user {
-            max-width: 40px;
-        }
-
-        &-news {
-            max-width: 300px;
-        }
-
+    &__buttons {
+      margin-top: 0;
+      margin-bottom: 10px;
     }
+  }
+
+  .img {
+    &-user {
+      max-width: 40px;
+    }
+
+    &-news {
+      max-width: 300px;
+    }
+  }
 }
 
 @media (max-width: 320px) {
-    .profileUserItem {
-        padding: 10px;
-        gap: 18px;
+  .profileUserItem {
+    padding: 10px;
+    gap: 18px;
 
-        &__content {
-            &-head {
-                margin-bottom: 12px;
+    &__content {
+      &-head {
+        margin-bottom: 12px;
 
-                .head {
-                    &-user {
-                        display: flex;
-                        gap: 10px;
-                    }
-                }
-
-            }
-
-            span {
-                font-size: 11px;
-            }
-
-            h5 {
-                font-size: 12px;
-
-            }
-
-            h3 {
-                font-size: 18px;
-                line-height: 26px;
-                margin-bottom: 8px;
-            }
-
-            p {
-
-                font-size: 11px;
-                line-height: 22px;
-            }
+        .head {
+          &-user {
+            display: flex;
+            gap: 10px;
+          }
         }
+      }
+
+      span {
+        font-size: 11px;
+      }
+
+      h5 {
+        font-size: 12px;
+      }
+
+      h3 {
+        font-size: 18px;
+        line-height: 26px;
+        margin-bottom: 8px;
+      }
+
+      p {
+        font-size: 11px;
+        line-height: 18px;
+      }
+    }
+  }
+
+  .img {
+    &-user {
+      max-width: 35px;
     }
 
-    .img {
-        &-user {
-            max-width: 35px;
-        }
-
-        &-news {
-            max-width: 245px;
-        }
-
-        &-like {
-            max-width: 18px;
-        }
+    &-news {
+      max-width: 245px;
     }
+
+    &-like {
+      max-width: 18px;
+    }
+  }
 }

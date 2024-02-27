@@ -5,11 +5,11 @@ import { useSelector } from "react-redux";
 import { getTags } from "../../modules/News/store/newsSlise";
 
 const Dropdown = ({ type, categories, text, selectIndex }) => {
-  const [selected, setSelected] = useState(text);
-  const [open, setOpen] = useState(false);
-
   //Получение тегов из редакса
   const tags = useSelector(getTags);
+
+  const [selected, setSelected] = useState(text);
+  const [open, setOpen] = useState(false);
 
   function toggle() {
     if (open == true) {

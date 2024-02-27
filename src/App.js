@@ -27,7 +27,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-      checkToken()
+    checkToken()
       .then((res) => {
         if (res) {
           //Пользователь авторизован!
@@ -50,6 +50,7 @@ function App() {
           <Route path="/profile" element={<Account />} />
           <Route path="/profile/edit" element={<EditAccount />} />
           <Route path="/article" element={<Article />} />
+          <Route path="/article/:id" element={<Article />} />
           <Route path="/post/:id" element={<NewsPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

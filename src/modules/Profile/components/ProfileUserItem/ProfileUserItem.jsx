@@ -11,6 +11,7 @@ import { deletePost } from "../../api/deletePost";
 import { useDispatch } from "react-redux";
 import { deletePostUser } from "../../store/userSlice";
 import ModalNotice from "../../../../components/ModalNotice/ModalNotice";
+import { Link } from "react-router-dom";
 
 const ProfileUserItem = ({ newsData, userName, userAvatar }) => {
   const pathImage = `http://localhost:6868/${newsData.img}`;
@@ -53,6 +54,7 @@ const ProfileUserItem = ({ newsData, userName, userAvatar }) => {
           </div>
         </div>
         <h3 className="base-title">{newsData.title}</h3>
+
         <p className="base-text">{newsData.content.substring(0, 230)}...</p>
       </div>
       <img
@@ -64,7 +66,9 @@ const ProfileUserItem = ({ newsData, userName, userAvatar }) => {
         <BaseButton styles={"buttons-delete"} onClick={deleteItem}>
           Delete a post
         </BaseButton>
-        <BaseButton styles={"buttons-edit"}>Edit the post</BaseButton>
+        <Link to={`/article/${newsData.id}`}>
+          <BaseButton styles={"buttons-edit"}>Edit the post</BaseButton>
+        </Link>
       </div>
     </div>
   );
