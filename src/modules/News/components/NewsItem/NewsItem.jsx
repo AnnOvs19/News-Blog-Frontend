@@ -18,7 +18,7 @@ const NewsItem = ({ newsData }) => {
             | {new Date(newsData.createdAt).toLocaleDateString()}
           </span>
         </div>
-        <h3 className="base-title">{newsData.title}</h3>
+        <h3 className="base-title">{newsData.title.substring(0, 48)}...</h3>
         <p className="base-text">{newsData.content.substring(0, 260)}...</p>
       </div>
       {newsData.likes.length > 0 ? (

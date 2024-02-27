@@ -12,31 +12,33 @@ import MiniSliderList from "../../../../components/MiniSlider/MiniSliderList/Min
 import "./news.scss";
 
 const News = ({}) => {
-  const [data, setData] = useState({});
+  const [bigSlider, setBigSlider] = useState([]);
+  const [miniSlider, setMiniSlider] = useState([]);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     fetchGetPosts().then((response) => {
       if (response.status) {
-        setData(response);
+        const arrBigSlider = response.posts
+          .reverse()
+          .filter((item, index) => item.id % 2 == 0 && index < 30);
+        const arrMiniSlider = response.posts.filter(
+          (item, index) => item.id % 2 !== 0 && index < 30
+        );
+        setBigSlider(arrBigSlider);
+        setMiniSlider(arrMiniSlider);
         dispatch(loadPosts(response.posts.sort((a, b) => b.id - a.id)));
       }
     });
   }, []);
 
-  //С помощью редакса или бэка сделать фильтрацию новостей в слайдерах
-  const arrBigSlider = newsArray.filter(
-    (item, index) => item.id % 2 == 0 && index < 10
-  );
-  const arrMiniSlider = newsArray.filter((item, index) => index < 9);
-
   return (
     <div>
-      <BigSliderList newsData={arrBigSlider} />
+      <BigSliderList newsData={bigSlider} />
       <Filters />
       <NewsList />
-      <MiniSliderList newsData={arrMiniSlider} />
+      <MiniSliderList newsData={miniSlider} />
     </div>
   );
 };

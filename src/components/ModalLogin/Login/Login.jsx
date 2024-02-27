@@ -4,8 +4,11 @@ import BaseButton from "../../../ui/BaseButton/BaseButton";
 import { useDispatch } from "react-redux";
 import { auth, setUser } from "../../../modules/Profile/store/userSlice";
 import { login, loginUser } from "../../../modules/Profile/api/loginUser";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ setActive }) => {
+  const nav = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -89,6 +92,7 @@ const Login = ({ setActive }) => {
             dispatch(setUser(res));
             //Пользователь авторизован!
             dispatch(auth(true));
+            nav("/");
             alert("Добро пожаловать!");
           }
         })

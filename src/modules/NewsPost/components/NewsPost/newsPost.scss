@@ -40,15 +40,18 @@
 
         h5 {
           font-size: 14px;
+          margin-bottom: -2px;
         }
       }
 
       p {
-        font-size: 14px;
+        font-size: 16px;
+        text-align: justify;
+        margin-bottom: 10px;
       }
 
       h3 {
-        font-size: 24px;
+        font-size: 25px;
         margin-bottom: 15px;
       }
     }
@@ -65,7 +68,7 @@
         width: auto;
       }
 
-      p {
+      span {
         font-size: 17px;
         color: #6d6e76;
       }

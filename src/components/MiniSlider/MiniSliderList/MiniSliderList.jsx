@@ -10,8 +10,6 @@ import "swiper/css/navigation";
 import "swiper/css";
 
 const MiniSliderList = ({ newsData }) => {
-  const [pages, setPages] = useState(newsData);
-
   return (
     <div className="miniSliderList">
       <div className="miniSliderList-box">
@@ -22,28 +20,28 @@ const MiniSliderList = ({ newsData }) => {
           spaceBetween={5}
           breakpoints={{
             639: {
-              slidesPerView: 1,
+              slidesPerView: 1
             },
 
             820: {
-              slidesPerView: 3,
+              slidesPerView: 3
             },
             865: {
-              slidesPerView: 1,
+              slidesPerView: 1
             },
 
             1000: {
-              slidesPerView: 4,
+              slidesPerView: 4
             },
             1500: {
-              slidesPerView: 4,
+              slidesPerView: 4
             },
             1700: {
-              slidesPerView: 4,
-            },
+              slidesPerView: 4
+            }
           }}
         >
-          {pages?.map((news, index) => {
+          {newsData?.map((news, index) => {
             return (
               <SwiperSlide key={index}>
                 <MiniSliderItem newsData={news} />
