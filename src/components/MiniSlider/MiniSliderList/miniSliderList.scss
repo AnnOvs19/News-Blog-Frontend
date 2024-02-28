@@ -1,79 +1,70 @@
 .miniSliderList {
-    position: relative;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1200px;
+  width: 1200px;
+
+  &-box {
     margin: 0 auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    max-width: 1200px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    max-width: 1200px;
-    width: 1200px;
-
-    &-box {
-        margin: 0 auto;
-        max-width: 1200px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        overflow: hidden;
-
-    }
-
-
+    overflow: hidden;
+  }
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-    width: 38px !important;
-    height: 38px !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 38px !important;
+  height: 38px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    &:after {
-        font-size: 24px !important;
-        color: #232536d3;
+  &:after {
+    font-size: 24px !important;
+    color: #232536d3;
+  }
 
-    }
-
-    &:hover {
-
-        transition: 0.5s;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.596);
-    }
+  &:hover {
+    transition: 0.5s;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.596);
+  }
 }
 
-
 @media (max-width: 1250px) {
-    .miniSliderList {
-        max-width: 700px;
-        width: 700px;
-    }
-
-    // .swiper-slide {
-    //     width: 230px !important;
-    //     max-width: 230px !important;
-    // }
+  .miniSliderList {
+    max-width: 700px;
+    width: 700px;
+  }
 }
 
 @media (max-width: 800px) {
-    .miniSliderList {
-        max-width: 490px;
-        width: 490px;
-    }
+  .miniSliderList {
+    max-width: 490px;
+    width: 490px;
+    margin-top: 70px;
+  }
 }
 
 @media (max-width: 500px) {
-    .miniSliderList {
-        max-width: 340px;
-        width: 340px;
-    }
+  .miniSliderList {
+    max-width: 340px;
+    width: 340px;
+    margin-top: 60px;
+  }
 }
 
 @media (max-width: 320px) {
-    .miniSliderList {
-        max-width: 265px;
-        width: 265px;
-    }
+  .miniSliderList {
+    max-width: 265px;
+    width: 265px;
+  }
 }

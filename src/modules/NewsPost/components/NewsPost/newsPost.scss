@@ -40,7 +40,6 @@
 
         h5 {
           font-size: 14px;
-          margin-bottom: -2px;
         }
       }
 
@@ -51,7 +50,7 @@
       }
 
       h3 {
-        font-size: 25px;
+        font-size: 28px;
         margin-bottom: 15px;
       }
     }
@@ -71,6 +70,159 @@
       span {
         font-size: 17px;
         color: #6d6e76;
+      }
+    }
+  }
+}
+
+@media (max-width: 1250px) {
+  .newsPost {
+    &-box {
+      margin-bottom: 60px;
+      max-width: 700px;
+      width: 700px;
+
+      &__content {
+        gap: 10px;
+        padding: 80px;
+
+        img {
+          max-width: 540px;
+        }
+
+        &-head {
+          span {
+            font-size: 12px;
+          }
+
+          h5 {
+            font-size: 12px;
+          }
+        }
+
+        p {
+          font-size: 16px;
+          line-height: 25px;
+        }
+
+        h3 {
+          font-size: 22px;
+          line-height: 31px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .newsPost {
+    &-box {
+      max-width: 490px;
+      width: 490px;
+
+      &__content {
+        gap: 5px;
+        padding: 40px;
+
+        img {
+          max-width: 410px;
+        }
+
+        p {
+          font-size: 14px;
+          line-height: 24px;
+        }
+
+        h3 {
+          font-size: 21px;
+          line-height: 29px;
+          margin-bottom: 8px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .newsPost {
+    &-box {
+      max-width: 340px;
+      width: 340px;
+
+      &__content {
+        gap: 2px;
+        padding: 25px;
+
+        img {
+          max-width: 290px;
+        }
+
+        &-head {
+          margin-top: 7px;
+          gap: 4px;
+
+          span {
+            font-size: 10.5px;
+          }
+
+          h5 {
+            font-size: 10.5px;
+          }
+        }
+
+        p {
+          font-size: 13px;
+          line-height: 23px;
+          margin-bottom: 12px;
+        }
+
+        h3 {
+          font-size: 17px;
+          line-height: 27px;
+          margin-bottom: 8px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .newsPost {
+    &-box {
+      max-width: 265px;
+      width: 265px;
+
+      &__content {
+        gap: 2px;
+        padding: 20px;
+
+        img {
+          max-width: 225px;
+        }
+
+        &-head {
+          margin-top: 5px;
+          gap: 4px;
+
+          span {
+            font-size: 10.5px;
+          }
+
+          h5 {
+            font-size: 10.5px;
+          }
+        }
+
+        p {
+          font-size: 12px;
+          line-height: 19px;
+        }
+
+        h3 {
+          font-size: 16px;
+          line-height: 23px;
+          margin-bottom: 6px;
+        }
       }
     }
   }
