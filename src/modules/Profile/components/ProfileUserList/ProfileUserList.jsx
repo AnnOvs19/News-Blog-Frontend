@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./profileUserList.scss";
 import ProfileUserItem from "../ProfileUserItem/ProfileUserItem";
@@ -8,11 +8,46 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserPosts, setUserPosts } from "../../store/userSlice";
 import { fethGetPostsUser } from "../../api/fetchGetPostUser";
+import ReactPaginate from "react-paginate";
 
 const ProfileUserList = ({ userName, userAvatar, userId }) => {
   const posts = useSelector(getUserPosts);
   const dispatch = useDispatch();
 
+  //Количество постов отображающихся за раз
+  const itemPreventPage = 3;
+
+  //Массив постов
+  const [items, setItems] = useState([]);
+  //Текущие посты для отображения
+  const [currentItems, setCurrentItems] = useState([]);
+  //Количество страниц
+  const [pageCount, setPageCount] = useState(0);
+  //Шаг смещения отображаемых элементов
+  const [itemOffset, setItemOffset] = useState(0);
+
+  //Заполнение и подсчёт состояний для пагинации, начальный рендер
+  useEffect(() => {
+    setItems(posts);
+    const endOffset = itemOffset + itemPreventPage;
+    setCurrentItems(posts.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(posts.length / itemPreventPage));
+  }, [posts]);
+
+  //Рендер при переключении страниц
+  useEffect(() => {
+    const endOffset = itemOffset + itemPreventPage;
+    setCurrentItems(posts.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(items.length / itemPreventPage));
+  }, [itemOffset, itemPreventPage]);
+
+  //Отслеживание клика переключения страниц
+  function handlePageClick(event) {
+    const newOffset = (event.selected * itemPreventPage) % items.length;
+    setItemOffset(newOffset);
+  }
+
+  //Запрос постов юзера
   useEffect(() => {
     fethGetPostsUser(userId)
       .then((res) => {
@@ -31,22 +66,41 @@ const ProfileUserList = ({ userName, userAvatar, userId }) => {
           </Link>
         </div>
         {posts.length > 0 ? (
-          posts?.map((news, index) => {
+          currentItems?.map((news, index) => {
             return (
-              // <Link to={`/post/${news.id}`} key={index}>
               <ProfileUserItem
                 newsData={news}
                 userName={userName}
                 userAvatar={userAvatar}
                 key={index}
               />
-              // </Link>
             );
           })
         ) : (
           <div className="emtyPosts">You don't have any publications yet!</div>
         )}
       </div>
+
+      <ReactPaginate
+        nextLabel="next"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={2}
+        pageCount={pageCount}
+        previousLabel="back"
+        pageClassName="pagination__item"
+        pageLinkClassName="pagination__link"
+        previousClassName="pagination__item"
+        previousLinkClassName="pagination__link"
+        nextClassName="pagination__item"
+        nextLinkClassName="pagination__link"
+        breakLabel="..."
+        breakClassName="pagination__item"
+        breakLinkClassName="pagination__link"
+        containerClassName="pagination"
+        activeClassName="activeBtnPag"
+        renderOnZeroPageCount={null}
+      />
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React from "react";
 
 import "./miniSliderItem.scss";
 import mockImg from "../../../assets/images/backgroundNews.jpg";
+import { Link } from "react-router-dom";
 
 const MiniSliderItem = ({ newsData }) => {
   const pathImage = `http://localhost:6868/${newsData.img}`;
@@ -16,7 +17,10 @@ const MiniSliderItem = ({ newsData }) => {
             | {new Date(newsData.createdAt).toLocaleDateString()}
           </span>
         </div>
-        <h1 className="base-title">{newsData.title.substring(0, 33)}...</h1>
+        <Link to={`/post/${newsData.id}`}>
+          <h1 className="base-title">{newsData.title.substring(0, 33)}...</h1>
+        </Link>
+
         <p className="base-text">{newsData.content.substring(0, 140)}...</p>
       </div>
     </div>

@@ -35,8 +35,8 @@
         gap: 15px;
       }
 
-      button{
-        &:last-child{
+      button {
+        &:last-child {
           width: 100%;
         }
       }
@@ -125,9 +125,6 @@
   .img-backgroundNews {
     width: 305px;
   }
-}
-
-@media (max-width: 380px) {
 }
 
 @media (max-width: 320px) {

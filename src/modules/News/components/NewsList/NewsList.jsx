@@ -79,6 +79,7 @@ const NewsList = () => {
             );
           })}
       </div>
+
       {currentItems.length < itemPreventPage ? (
         ""
       ) : (

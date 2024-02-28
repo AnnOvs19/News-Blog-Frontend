@@ -3,6 +3,7 @@ import React from "react";
 import "./bigSliderItem.scss";
 import BaseButton from "../../../../ui/BaseButton/BaseButton";
 import mockImg from "../../../../assets/images/backgroundNews.jpg";
+import { Link } from "react-router-dom";
 
 const BigSliderItem = ({ newsData }) => {
   const pathImage = `http://localhost:6868/${newsData.img}`;
@@ -18,7 +19,9 @@ const BigSliderItem = ({ newsData }) => {
           </span>
         </div>
         <p>{newsData.content.substring(0, 200)}...</p>
-        <BaseButton>Read more</BaseButton>
+        <Link to={`/post/${newsData.id}`}>
+          <BaseButton styles={"sliderButton"}>Read more</BaseButton>
+        </Link>
       </div>
       <img src={newsData.img ? pathImage : mockImg} alt="#" />
     </div>

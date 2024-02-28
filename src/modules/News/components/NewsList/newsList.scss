@@ -78,6 +78,15 @@
       gap: 20px;
     }
   }
+
+  .pagination {
+    margin-top: 30px;
+    font-size: 15px;
+
+    &__link {
+      border-radius: 22px;
+    }
+  }
 }
 
 @media (max-width: 320px) {
