@@ -80,11 +80,22 @@
   }
 
   .pagination {
-    margin-top: 30px;
-    font-size: 15px;
+    margin-top: 40px;
+    font-size: 16px;
+
+    &__item {
+      &:nth-child(1) {
+        margin-right: 6px;
+      }
+
+      &:nth-child(7) {
+        margin-left: 6px;
+      }
+    }
 
     &__link {
       border-radius: 22px;
+      padding: 4px 10px;
     }
   }
 }
