@@ -8,6 +8,7 @@ import { fetchGetTypes } from "../../api/fetchGetTypes";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearFiltersSearch,
+  clearFiltersTag,
   filterSearchPosts,
   filterTagPosts,
   getPosts,
@@ -27,13 +28,6 @@ const Filters = () => {
   const dispatch = useDispatch();
 
   const [tags, setTags] = useState(null);
-  // const [searchValue, setSearchValue] = useState("");
-
-  useEffect(() => {
-    fetchGetTypes().then((res) => {
-      dispatch(loadTags(res));
-    });
-  }, []);
 
   function selectedTags(id) {
     setTags(id);
@@ -103,6 +97,14 @@ const Filters = () => {
         break;
     }
   }
+
+  useEffect(() => {
+    fetchGetTypes().then((res) => {
+      dispatch(loadTags(res));
+    });
+    dispatch(clearFiltersSearch());
+    dispatch(clearFiltersTag());
+  }, []);
 
   return (
     <div className="filters">

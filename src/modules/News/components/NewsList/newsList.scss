@@ -4,13 +4,46 @@
   max-width: 1200px;
   width: 1200px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
 
   &__array {
     display: flex;
     flex-direction: column;
     gap: 30px;
+  }
+}
+
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  justify-content: center;
+  margin-top: 50px;
+  font-size: 22px;
+
+  &__item {
+    &:nth-child(1) {
+      margin-right: 10px;
+    }
+
+    &:nth-child(7) {
+      margin-left: 10px;
+    }
+  }
+
+  &__link {
+    border-radius: 30px;
+    color: black;
+    padding: 4px 10px;
+    cursor: pointer;
+  }
+}
+
+.activeBtnPag {
+  .pagination__link {
+    color: rgb(0, 0, 0);
+    background-color: #ffd050;
   }
 }
 
