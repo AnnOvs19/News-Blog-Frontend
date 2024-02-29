@@ -1,49 +1,104 @@
 .base {
-    &-title {
-        font-size: normal;
-        font-weight: 700;
-        color: #11121a;
-        line-height: 35px;
-    }
+  &-title {
+    font-size: normal;
+    font-weight: 700;
+    color: #11121a;
+    line-height: 35px;
+  }
 
-    &-subtitle {
-        font-size: normal;
-        font-weight: 500;
-        color: #592EA9;
-        line-height: 20px;
-    }
+  &-subtitle {
+    font-size: normal;
+    font-weight: 500;
+    color: #592ea9;
+    line-height: 20px;
+  }
 
-    &-text {
-        font-size: normal;
-        font-weight: 400;
-        color: #6D6E76;
-        line-height: 28px;
-    }
+  &-text {
+    font-size: normal;
+    font-weight: 400;
+    color: #6d6e76;
+    line-height: 28px;
+  }
 }
 
 .error-span {
-    margin-top: 5px;
-    color: rgb(255, 42, 42);
-    font-size: 11px;
+  margin-top: 5px;
+  color: rgb(255, 42, 42);
+  font-size: 11px;
 }
 
 .cancelBtn {
-    width: 100%;
-    background-color: #c94030 !important;
-    color: white !important;
+  width: 100%;
+  background-color: #c94030 !important;
+  color: white !important;
 
-    &:hover {
-        background-color: #592EA9 !important;
-        color: white !important;
-    }
+  &:hover {
+    background-color: #592ea9 !important;
+    color: white !important;
+  }
 }
 
 .disableForm {
+  background-color: #232536ca !important;
+  color: white !important;
+
+  &:hover {
     background-color: #232536ca !important;
     color: white !important;
+  }
+}
 
-    &:hover {
-        background-color: #232536ca !important;
-        color: white !important;
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  justify-content: center;
+  margin-top: 50px;
+  font-size: 22px;
+
+  &__item {
+    &:nth-child(1) {
+      margin-right: 10px;
     }
+
+    &:nth-child(7) {
+      margin-left: 10px;
+    }
+  }
+
+  &__link {
+    border-radius: 30px;
+    color: black;
+    padding: 4px 10px;
+    cursor: pointer;
+  }
+}
+
+.activeBtnPag {
+  .pagination__link {
+    color: rgb(0, 0, 0);
+    background-color: #ffd050;
+  }
+}
+
+@media (max-width: 500px) {
+  .pagination {
+    margin-top: 40px;
+    font-size: 16px;
+
+    &__item {
+      &:nth-child(1) {
+        margin-right: 6px;
+      }
+
+      &:nth-child(7) {
+        margin-left: 6px;
+      }
+    }
+
+    &__link {
+      border-radius: 22px;
+      padding: 4px 10px;
+    }
+  }
 }

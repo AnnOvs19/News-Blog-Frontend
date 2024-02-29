@@ -26,6 +26,7 @@ function App() {
   //Нужно для предотвращения ререндера хедера при перезагрузке
   const [loading, setLoading] = useState(true);
 
+  //Каждое обновление сайта проверяем токен юзера
   useEffect(() => {
     checkToken()
       .then((res) => {

@@ -4,7 +4,6 @@ import "./profileUser.scss";
 import ProfileUserHead from "../ProfileUserHead/ProfileUserHead";
 import ProfileUserList from "../ProfileUserList/ProfileUserList";
 import MiniSliderList from "../../../../components/MiniSlider/MiniSliderList/MiniSliderList";
-import { newsArray } from "../../../News/store/newsArray";
 import { getUserData, setUserPosts } from "../../store/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { fethGetPostsUser } from "../../api/fetchGetPostUser";

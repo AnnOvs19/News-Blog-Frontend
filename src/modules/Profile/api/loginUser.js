@@ -10,7 +10,7 @@ export async function loginUser(data) {
     body: JSON.stringify(data)
   }).then((response) => response.json());
 
-  //Сохранение токена в localStorage
+  //Если токен отсутствует - выводим сообщение, иначе записываем токен в localStorage и декодируем его
   if (!response.token) {
     alert(response.message);
   } else {

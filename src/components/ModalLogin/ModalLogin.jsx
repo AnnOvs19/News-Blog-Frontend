@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import "./modalLogin.scss";
-import BaseInput from "../../ui/BaseInput/BaseInput";
-import BaseButton from "../../ui/BaseButton/BaseButton";
 import Login from "./Login/Login";
 import Register from "./Register/Register";
 
 const ModalLogin = ({ active, setActive }) => {
+  // Состояние для переключения логина или регистрации
   const [activeTab, setActiveTab] = useState(0);
 
   return (

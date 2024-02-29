@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { user } from "../../store/mockUser";
 
 import BaseButton from "../../../../ui/BaseButton/BaseButton";
 
@@ -10,7 +9,6 @@ import "./profileUserItem.scss";
 import { deletePost } from "../../api/deletePost";
 import { useDispatch } from "react-redux";
 import { deletePostUser } from "../../store/userSlice";
-import ModalNotice from "../../../../components/ModalNotice/ModalNotice";
 import { Link } from "react-router-dom";
 
 const ProfileUserItem = ({ newsData, userName, userAvatar }) => {

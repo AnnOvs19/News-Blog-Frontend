@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import "./profileUserList.scss";
 import ProfileUserItem from "../ProfileUserItem/ProfileUserItem";
-import { newsArray } from "../../../News/store/newsArray";
 import BaseButton from "../../../../ui/BaseButton/BaseButton";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

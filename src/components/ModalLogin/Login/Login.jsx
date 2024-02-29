@@ -7,14 +7,18 @@ import { login, loginUser } from "../../../modules/Profile/api/loginUser";
 import { useNavigate } from "react-router-dom";
 
 const Login = ({ setActive }) => {
+  //Хук для навигации по сайту
   const nav = useNavigate();
 
+  //Состояние емейла и пароля, изначально пустое
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  //Состояние отвечающее за ситуацию, когда пользователь прикоснулся к инпуту и ничего не ввёл
   const [emailDirty, setEmailDirty] = useState(false);
   const [passwordDirty, setPasswordDirty] = useState(false);
 
+  //Отработка ошибок
   const [emailError, setEmailError] = useState(
     "Строка с почтой не может быть пустой"
   );
@@ -22,22 +26,15 @@ const Login = ({ setActive }) => {
     "Строка с поролем не может быть пустой"
   );
 
+  //Состояние кнопки отправки кнопки
   const [disable, setDisable] = useState(true);
 
+  //Валидность формы
   const [formValid, setFormValid] = useState(false);
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (emailError || passwordError) {
-      setFormValid(false);
-      setDisable(true);
-    } else {
-      setFormValid(true);
-      setDisable(false);
-    }
-  }, [emailError, passwordError]);
-
+  //Валидация емайла, если value не соответствует регулярному выражению, то возвращаем ошибку
   function emailHandler(e) {
     setEmail(e.target.value);
     const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -48,6 +45,7 @@ const Login = ({ setActive }) => {
     }
   }
 
+  //Валидация пароля, если пароль меньше 5 и длиннее 20 символов, возвращаем ошибку, если строка пустая - возвращаем ошибку
   function passwordHandler(e) {
     setPassword(e.target.value);
     if (e.target.value.length < 5 || e.target.value > 20) {
@@ -60,6 +58,7 @@ const Login = ({ setActive }) => {
     }
   }
 
+  //Если человек дотронулся инпута и ничего не записал, перезаписываем состаяния
   function blurHandler(e) {
     switch (e.target.name) {
       case "email":
@@ -75,6 +74,18 @@ const Login = ({ setActive }) => {
     }
   }
 
+  //Если форма валидна активируем кнопку
+  useEffect(() => {
+    if (emailError || passwordError) {
+      setFormValid(false);
+      setDisable(true);
+    } else {
+      setFormValid(true);
+      setDisable(false);
+    }
+  }, [emailError, passwordError]);
+
+  //Асинхронная функция для входа в кабинет
   async function logIn() {
     if (formValid) {
       const data = {
@@ -82,6 +93,7 @@ const Login = ({ setActive }) => {
         password: password
       };
 
+      //Закрытие модального окна после нажатия кнопки
       setActive(false);
 
       //Функция входа

@@ -5,7 +5,6 @@ import { loadPosts } from "../../store/newsSlise";
 
 import Filters from "../Filters/Filters";
 import NewsList from "../NewsList/NewsList";
-import { newsArray } from "../../store/newsArray";
 import BigSliderList from "../BigSliderList/BigSliderList";
 import MiniSliderList from "../../../../components/MiniSlider/MiniSliderList/MiniSliderList";
 

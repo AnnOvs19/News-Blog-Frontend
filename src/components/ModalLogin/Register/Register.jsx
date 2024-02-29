@@ -10,18 +10,22 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const Register = ({ setActive }) => {
+  //Хук для навигации по сайту
   const nav = useNavigate();
 
   const dispatch = useDispatch();
 
+  //Состояние имени, емейла и пароля, изначально пустое
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  //Состояние отвечающее за ситуацию, когда пользователь прикоснулся к инпуту и ничего не ввёл
   const [nameDirty, setNameDirty] = useState(false);
   const [emailDirty, setEmailDirty] = useState(false);
   const [passwordDirty, setPasswordDirty] = useState(false);
 
+  //Отработка ошибок
   const [nameError, setNameError] = useState(
     "Строка с именем пользователя не может быть пустой"
   );
@@ -32,22 +36,13 @@ const Register = ({ setActive }) => {
     "Строка с поролем не может быть пустой"
   );
 
+  //Состояние кнопки отправки кнопки
   const [disable, setDisable] = useState(true);
 
+  //Валидность формы
   const [formValid, setFormValid] = useState(false);
 
-  const [response, setResponse] = useState(null);
-
-  useEffect(() => {
-    if (nameError || emailError || passwordError) {
-      setFormValid(false);
-      setDisable(true);
-    } else {
-      setFormValid(true);
-      setDisable(false);
-    }
-  }, [nameError, emailError, passwordError]);
-
+  //Валидация имени, если строка с именем пустая или имя меньше двух символов, возвращаем ошибку
   function nameHandler(e) {
     setName(e.target.value);
     if (e.target.value.length < 2) {
@@ -60,6 +55,7 @@ const Register = ({ setActive }) => {
     }
   }
 
+  //Валидация емайла, если value не соответствует регулярному выражению, то возвращаем ошибку
   function emailHandler(e) {
     setEmail(e.target.value);
     const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -70,6 +66,7 @@ const Register = ({ setActive }) => {
     }
   }
 
+  //Валидация пароля, если пароль меньше 5 и длиннее 20 символов, возвращаем ошибку, если строка пустая - возвращаем ошибку
   function passwordHandler(e) {
     setPassword(e.target.value);
     if (e.target.value.length < 5 || e.target.value > 20) {
@@ -82,6 +79,7 @@ const Register = ({ setActive }) => {
     }
   }
 
+  //Если человек дотронулся инпута и ничего не записал, перезаписываем состаяния
   function blurHandler(e) {
     switch (e.target.name) {
       case "name":
@@ -101,6 +99,18 @@ const Register = ({ setActive }) => {
     }
   }
 
+  //Если есть хоть одна ошибка из трёх, форма не валидна, а кнопка заблокирована. Если ошибок нет - кнопка валидна
+  useEffect(() => {
+    if (nameError || emailError || passwordError) {
+      setFormValid(false);
+      setDisable(true);
+    } else {
+      setFormValid(true);
+      setDisable(false);
+    }
+  }, [nameError, emailError, passwordError]);
+
+  //Асинхронная функция для создания нового юзер
   async function userCreate() {
     if (formValid) {
       const data = {
@@ -108,6 +118,8 @@ const Register = ({ setActive }) => {
         email: email,
         password: password
       };
+
+      //Закрытие модального окна после нажатия кнопки
       setActive(false);
 
       //Функция регистрации
