@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dropdownArrow from "../../assets/icons/dropdownArrow.svg";
 import "./dropdown.scss";
 import { useSelector } from "react-redux";
@@ -8,9 +8,11 @@ const Dropdown = ({ type, categories, text, selectIndex }) => {
   //Получение тегов из редакса
   const tags = useSelector(getTags);
 
+  //Состояния для отображения того или иного дропдауна, и открытия-закрытия
   const [selected, setSelected] = useState(text);
   const [open, setOpen] = useState(false);
 
+  //Открытие и закрытие дропдауна
   function toggle() {
     if (open == true) {
       setOpen(false);
@@ -19,9 +21,35 @@ const Dropdown = ({ type, categories, text, selectIndex }) => {
     }
   }
 
+  //Вешаем на весь документ слушатель событий и при клике вызываем функцию closeByClickOut
+  function initListeners() {
+    document.addEventListener("click", closeByClickOut);
+  }
+
+  //При нажатии на любое место в документе, дропдаун закрывается
+  function closeByClickOut(event) {
+    //event.path - путь к элементу в дом,дереву, composedPath() возвращает путь события, представляющий собой массив объектов, на которых будут вызваны обработчики событий
+    const path = event.path || (event.composedPath && event.composedPath());
+
+    //Если пути к дропдауну нет, то мы его закрываем
+    if (
+      event &&
+      !path.find(
+        (div) =>
+          div.classList && div.classList.contains(`dropdown-type-${type}`)
+      )
+    ) {
+      setOpen(false);
+    }
+  }
+
+  useEffect(() => {
+    initListeners();
+  }, []);
+
   return (
     <div
-      className="dropdown"
+      className={`dropdown dropdown-type-${type}`}
       onClick={() => {
         toggle();
       }}
