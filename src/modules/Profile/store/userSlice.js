@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  unknowUser: {},
   userData: {},
   isAuth: false,
   userPosts: []
@@ -13,6 +14,11 @@ export const userSlice = createSlice({
     //Запись состояния - авторизован пользователь или нет
     auth: (state, action) => {
       state.isAuth = action.payload;
+    },
+
+    //Запись данных о стороннем неизвестном юзере
+    setUnknowUser: (state, action) => {
+      state.unknowUser = action.payload;
     },
 
     //Запись данных о юзере из jwt токена (имя, аватар, статус, емейл)
@@ -35,11 +41,14 @@ export const userSlice = createSlice({
   }
 });
 
-export const { auth, setUser, setUserPosts, deletePostUser } =
+export const { auth, setUser, setUnknowUser, setUserPosts, deletePostUser } =
   userSlice.actions;
 
 //Получение статуса авторизации
 export const getAuth = (state) => state.userSlice.isAuth;
+
+//Получение данных о стороннем неизвестном юзере
+export const getUnknowUser = (state) => state.userSlice.unknowUser;
 
 //Получение информации о юзере
 export const getUserData = (state) => state.userSlice.userData;

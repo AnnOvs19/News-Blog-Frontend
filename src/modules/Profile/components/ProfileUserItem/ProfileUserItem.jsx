@@ -9,14 +9,19 @@ import "./profileUserItem.scss";
 import { deletePost } from "../../api/deletePost";
 import { useDispatch } from "react-redux";
 import { deletePostUser } from "../../store/userSlice";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const ProfileUserItem = ({ newsData, userName, userAvatar }) => {
+  //Путь к изображениям новости и аватара юзера
   const pathImage = `http://localhost:6868/${newsData.img}`;
   const pathAvatar = `http://localhost:6868/${userAvatar}`;
 
+  //ID для определения страницы юзера(своя или другого пользователя)
+  const { id } = useParams();
+
   const dispatch = useDispatch();
 
+  //Удаление поста юзера
   function deleteItem() {
     dispatch(deletePostUser(newsData.id));
     deletePost(newsData.id)
@@ -61,14 +66,18 @@ const ProfileUserItem = ({ newsData, userName, userAvatar }) => {
         src={newsData.img ? pathImage : mockImg}
         alt="#"
       />
-      <div className="profileUserItem__buttons">
-        <BaseButton styles={"buttons-delete"} onClick={deleteItem}>
-          Delete a post
-        </BaseButton>
-        <Link to={`/article/${newsData.id}`}>
-          <BaseButton styles={"buttons-edit"}>Edit the post</BaseButton>
-        </Link>
-      </div>
+      {id ? (
+        ""
+      ) : (
+        <div className="profileUserItem__buttons">
+          <BaseButton styles={"buttons-delete"} onClick={deleteItem}>
+            Delete a post
+          </BaseButton>
+          <Link to={`/article/${newsData.id}`}>
+            <BaseButton styles={"buttons-edit"}>Edit the post</BaseButton>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

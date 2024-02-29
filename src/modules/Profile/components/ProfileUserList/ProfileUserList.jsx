@@ -3,15 +3,24 @@ import React, { useEffect, useState } from "react";
 import "./profileUserList.scss";
 import ProfileUserItem from "../ProfileUserItem/ProfileUserItem";
 import BaseButton from "../../../../ui/BaseButton/BaseButton";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserPosts, setUserPosts } from "../../store/userSlice";
+import {
+  getUnknowUser,
+  getUserPosts,
+  setUserPosts
+} from "../../store/userSlice";
 import { fethGetPostsUser } from "../../api/fetchGetPostUser";
 import ReactPaginate from "react-paginate";
 
 const ProfileUserList = ({ userName, userAvatar, userId }) => {
+  //Получение данных из редакса: информация о юзере, информация о стороннем пользователе
+  const unknowUser = useSelector(getUnknowUser);
   const posts = useSelector(getUserPosts);
   const dispatch = useDispatch();
+
+  //ID для определения страницы юзера(своя или другого пользователя)
+  const { id } = useParams();
 
   //Количество постов отображающихся за раз
   const itemPreventPage = 3;
@@ -59,10 +68,15 @@ const ProfileUserList = ({ userName, userAvatar, userId }) => {
     <div className="profileUserList">
       <div className="profileUserList__array">
         <div className="profileUserList__array-head">
-          <h1 className="base-tile">My posts</h1>
-          <Link to={"/article"}>
-            <BaseButton>Create a new post</BaseButton>
-          </Link>
+          <h1 className="base-tile">{id ? "Publications" : "My posts"}</h1>
+
+          {id ? (
+            ""
+          ) : (
+            <Link to={"/article"}>
+              <BaseButton>Create a new post</BaseButton>
+            </Link>
+          )}
         </div>
         {posts.length > 0 ? (
           currentItems?.map((news, index) => {

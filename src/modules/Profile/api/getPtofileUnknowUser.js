@@ -1,0 +1,9 @@
+export async function getPtofileUnknowUser(id) {
+  const URL = `http://localhost:6868/api/user/page?id=${id}`;
+
+  const response = await fetch(URL, {
+    method: "GET"
+  }).then((response) => response.json());
+
+  return response;
+}

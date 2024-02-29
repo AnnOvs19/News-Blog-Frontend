@@ -21,25 +21,25 @@ import {
 } from "../../store/newsSlise";
 
 const Filters = () => {
+  //Получение из редакса массивов всех постов/отсортированных постов по категориям и по поиску
   const allPosts = useSelector(getPosts);
   const tagPosts = useSelector(getTagPosts);
   const searchPosts = useSelector(getSearchPosts);
 
   const dispatch = useDispatch();
 
-  const [tags, setTags] = useState(null);
-
+  //Очищение массива по поиску, выбор категории по id
   function selectedTags(id) {
-    setTags(id);
     dispatch(clearFiltersSearch());
     dispatch(filterTagPosts(id));
   }
 
+  //Очищение массива по тегам, поиска по содержимому(названию)
   function searchNews(value) {
     dispatch(filterTagPosts());
     dispatch(filterSearchPosts(value));
   }
-
+  //Сортировка трёх массивов по последним новостям
   function sortNewPosts(allPosts, tagPosts, searchPosts) {
     const sortArrayPosts = allPosts.sort((a, b) => b.id - a.id);
     const sortArrayTagPosts = tagPosts.sort((a, b) => b.id - a.id);
@@ -50,6 +50,7 @@ const Filters = () => {
     dispatch(loadSearchPosts(sortArraySearchPosts));
   }
 
+  //Сортировка трёх массивов по старым новостям
   function sortOldPosts(allPosts, tagPosts, searchPosts) {
     const sortArrayPosts = allPosts.sort((a, b) => a.id - b.id);
     const sortArrayTagPosts = tagPosts.sort((a, b) => a.id - b.id);
@@ -60,6 +61,7 @@ const Filters = () => {
     dispatch(loadSearchPosts(sortArraySearchPosts));
   }
 
+  //Сортировка трёх массивов по лайкам
   function sortPopularPosts(allPosts, tagPosts, searchPosts) {
     const sortArrayPosts = allPosts.sort(
       (a, b) => b.likes.length - a.likes.length
@@ -76,6 +78,7 @@ const Filters = () => {
     dispatch(loadSearchPosts(sortArraySearchPosts));
   }
 
+  //Выбор метода сортировки новостей
   function checkCategory(id) {
     const copyAllPosts = [...allPosts];
     const copyTagPosts = [...tagPosts];
@@ -98,6 +101,7 @@ const Filters = () => {
     }
   }
 
+  //Получение типов новостей и отчистка фильров при каждом обновлении
   useEffect(() => {
     fetchGetTypes().then((res) => {
       dispatch(loadTags(res));

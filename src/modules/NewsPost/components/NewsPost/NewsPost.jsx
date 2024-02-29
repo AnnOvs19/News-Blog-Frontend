@@ -19,7 +19,7 @@ const NewsPost = () => {
   return (
     <div className="newsPost">
       <div className="newsPost-box">
-        {dataPost != null ? <NewsView data={dataPost} /> : ""}
+        {dataPost != null ? <NewsView data={dataPost} key={id} /> : ""}
       </div>
     </div>
   );

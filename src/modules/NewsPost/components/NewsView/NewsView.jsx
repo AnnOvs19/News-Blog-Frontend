@@ -6,6 +6,7 @@ import { fetchSetLikes } from "../../api/fetchSetLikes";
 import { useSelector } from "react-redux";
 import { getUserData } from "../../../Profile/store/userSlice";
 import { fetchRemoveLikes } from "../../api/fetchRemoveLikes";
+import { Link } from "react-router-dom";
 
 const NewsView = ({ data }) => {
   const user = useSelector(getUserData);
@@ -61,7 +62,10 @@ const NewsView = ({ data }) => {
       <img src={data.img ? pathImage : mockImg} alt="#" />
       <div className="newsPost-box__content-head">
         <span className="base-text">By</span>
-        <h5 className="base-subtitle">{data.user.name}</h5>
+        <Link to={`/profile/user/${data.userId}`}>
+          <h5 className="base-subtitle">{data.user.name}</h5>
+        </Link>
+
         <span className="base-text">
           | {new Date(data.createdAt).toLocaleDateString()}
         </span>

@@ -11,11 +11,13 @@ import MiniSliderList from "../../../../components/MiniSlider/MiniSliderList/Min
 import "./news.scss";
 
 const News = ({}) => {
+  //Состояния слайдеров
   const [bigSlider, setBigSlider] = useState([]);
   const [miniSlider, setMiniSlider] = useState([]);
 
   const dispatch = useDispatch();
 
+  //Получение всех постов, добавление и фильтрация постов в слайдере при обновлении
   useEffect(() => {
     fetchGetPosts().then((response) => {
       if (response.status) {

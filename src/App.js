@@ -16,9 +16,11 @@ import NewsPage from "./pages/NewsPage/NewsPage";
 
 import { auth, setUser } from "./modules/Profile/store/userSlice";
 import Loader from "./components/Loader/Loader";
-import { check, checkToken } from "./modules/Profile/api/checkToken";
+import { checkToken } from "./modules/Profile/api/checkToken";
 
 import "./App.scss";
+import { loadTags } from "./modules/News/store/newsSlise";
+import { fetchGetTypes } from "./modules/News/api/fetchGetTypes";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,8 +28,8 @@ function App() {
   //Нужно для предотвращения ререндера хедера при перезагрузке
   const [loading, setLoading] = useState(true);
 
-  //Каждое обновление сайта проверяем токен юзера
   useEffect(() => {
+    //Каждое обновление сайта проверяем токен юзера
     checkToken()
       .then((res) => {
         if (res) {
@@ -37,6 +39,11 @@ function App() {
         }
       })
       .finally(() => setLoading(false));
+
+    //Получение категорий в "создании поста" после обновлеия
+    fetchGetTypes().then((res) => {
+      dispatch(loadTags(res));
+    });
   }, []);
 
   if (loading) {
@@ -49,6 +56,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Account />} />
+          <Route path="/profile/user/:id" element={<Account />} />
           <Route path="/profile/edit" element={<EditAccount />} />
           <Route path="/article" element={<Article />} />
           <Route path="/article/:id" element={<Article />} />
