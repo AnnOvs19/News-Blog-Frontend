@@ -34,18 +34,38 @@ const ProfileUserList = ({ userName, userAvatar, userId }) => {
   //Шаг смещения отображаемых элементов
   const [itemOffset, setItemOffset] = useState(0);
 
-  //Заполнение и подсчёт состояний для пагинации, начальный рендер
-  useEffect(() => {
+  //Рендер постов авторизованного юзера
+  function renderUserPosts() {
     setItems(posts);
     const endOffset = itemOffset + itemPreventPage;
     setCurrentItems(posts.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(posts.length / itemPreventPage));
+  }
+
+  //Рендер постов стороннего юзера
+  function renderUnknowUserPosts() {
+    const arr = unknowUser.posts;
+    if (Array.isArray(arr)) {
+      setItems(arr);
+      const endOffset = itemOffset + itemPreventPage;
+      setCurrentItems(arr.slice(itemOffset, endOffset));
+      setPageCount(Math.ceil(arr.length / itemPreventPage));
+    }
+  }
+
+  //Заполнение и подсчёт состояний для пагинации, начальный рендер
+  useEffect(() => {
+    if (id) {
+      renderUnknowUserPosts();
+    } else {
+      renderUserPosts();
+    }
   }, [posts]);
 
   //Рендер при переключении страниц
   useEffect(() => {
     const endOffset = itemOffset + itemPreventPage;
-    setCurrentItems(posts.slice(itemOffset, endOffset));
+    setCurrentItems(items.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(items.length / itemPreventPage));
   }, [itemOffset, itemPreventPage]);
 
@@ -78,13 +98,14 @@ const ProfileUserList = ({ userName, userAvatar, userId }) => {
             </Link>
           )}
         </div>
-        {posts.length > 0 ? (
+
+        {items?.length > 0 ? (
           currentItems?.map((news, index) => {
             return (
               <ProfileUserItem
                 newsData={news}
-                userName={userName}
-                userAvatar={userAvatar}
+                userName={id ? unknowUser.name : userName}
+                userAvatar={id ? unknowUser.avatar : userAvatar}
                 key={index}
               />
             );
