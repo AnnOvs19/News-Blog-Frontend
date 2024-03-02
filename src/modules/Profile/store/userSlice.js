@@ -33,7 +33,7 @@ export const userSlice = createSlice({
 
     //Удаление одного поста юзера
     deletePostUser: (state, action) => {
-      //Записываем в массив постов юзеры все посты, кроме удаляемого
+      //Записываем в массив постов юзера все посты, кроме удаляемого
       state.userPosts = state.userPosts.filter(
         (item) => item.id != action.payload
       );

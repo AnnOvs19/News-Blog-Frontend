@@ -12,11 +12,16 @@ import { useSelector } from "react-redux";
 import { getAuth, getUserData } from "../../modules/Profile/store/userSlice";
 
 const Header = () => {
+  //Состояние для модального окна
   const [modalActive, setModalActive] = useState(false);
+  //Состояние для меню при адаптации
   const [menuStatus, setMenuStatus] = useState(false);
+  //Получаем статус аунтификации из стора
   const isAuth = useSelector(getAuth);
+  //Получаем объект юзера из стора
   const userData = useSelector(getUserData);
 
+  //Функция для открытия и закрытия меню
   function toggleMenu() {
     if (menuStatus == false) {
       setMenuStatus(true);

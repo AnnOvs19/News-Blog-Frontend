@@ -9,6 +9,7 @@ import { fetchRemoveLikes } from "../../api/fetchRemoveLikes";
 import { Link } from "react-router-dom";
 
 const NewsView = ({ data }) => {
+  //получаем данные о юзере
   const user = useSelector(getUserData);
 
   //Проверка: лайкал ли юзер раньше этот пост
@@ -24,11 +25,13 @@ const NewsView = ({ data }) => {
   //Состояние количества лайков
   const [countLikes, setCountLikes] = useState(data.likes.length);
 
+  //Путь к изображению поста
   const pathImage = `http://localhost:6868/${data.img}`;
+  //Перенос строк
   const arrStr = data.content.split("\n").map((str) => <p>{str}</p>);
 
+  //Проверка - если юзер авторизован, то он может добавить и снять лайк
   function setLike() {
-    //Проверка - если юзер авторизован, то он может добавить и снять лайк
     if (user) {
       const dataLike = {
         userId: user.id,

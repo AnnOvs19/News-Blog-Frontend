@@ -112,6 +112,7 @@ const Register = ({ setActive }) => {
 
   //Асинхронная функция для создания нового юзер
   async function userCreate() {
+    //Если форма валидна, отправляем данные на сервер
     if (formValid) {
       const data = {
         name: name,

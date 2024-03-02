@@ -14,7 +14,7 @@ import { fethGetPostsUser } from "../../api/fetchGetPostUser";
 import ReactPaginate from "react-paginate";
 
 const ProfileUserList = ({ userName, userAvatar, userId }) => {
-  //Получение данных из редакса: информация о юзере, информация о стороннем пользователе
+  //Получение данных из редакса: посты юзера, информация о стороннем пользователе
   const unknowUser = useSelector(getUnknowUser);
   const posts = useSelector(getUserPosts);
   const dispatch = useDispatch();
@@ -37,8 +37,11 @@ const ProfileUserList = ({ userName, userAvatar, userId }) => {
   //Рендер постов авторизованного юзера
   function renderUserPosts() {
     setItems(posts);
+    //Складываем шаг смещения и количество постов на странице
     const endOffset = itemOffset + itemPreventPage;
+    //Нарезка постов для одной страницы
     setCurrentItems(posts.slice(itemOffset, endOffset));
+    //Подсчёт страниц
     setPageCount(Math.ceil(posts.length / itemPreventPage));
   }
 
@@ -62,18 +65,19 @@ const ProfileUserList = ({ userName, userAvatar, userId }) => {
     }
   }, [posts]);
 
-  //Рендер при переключении страниц
+  //Отслеживание клика переключения страниц
+  function handlePageClick(event) {
+    //event.selected - выбранный номер страницы
+    const newOffset = (event.selected * itemPreventPage) % items.length;
+    setItemOffset(newOffset);
+  }
+
+  //Рендер при переключении страниц, вызывается при изменении itemOffset
   useEffect(() => {
     const endOffset = itemOffset + itemPreventPage;
     setCurrentItems(items.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(items.length / itemPreventPage));
   }, [itemOffset, itemPreventPage]);
-
-  //Отслеживание клика переключения страниц
-  function handlePageClick(event) {
-    const newOffset = (event.selected * itemPreventPage) % items.length;
-    setItemOffset(newOffset);
-  }
 
   //Запрос постов юзера
   useEffect(() => {

@@ -3,7 +3,7 @@ import BaseInput from "../../../ui/BaseInput/BaseInput";
 import BaseButton from "../../../ui/BaseButton/BaseButton";
 import { useDispatch } from "react-redux";
 import { auth, setUser } from "../../../modules/Profile/store/userSlice";
-import { login, loginUser } from "../../../modules/Profile/api/loginUser";
+import { loginUser } from "../../../modules/Profile/api/loginUser";
 import { useNavigate } from "react-router-dom";
 
 const Login = ({ setActive }) => {
@@ -26,7 +26,7 @@ const Login = ({ setActive }) => {
     "Строка с поролем не может быть пустой"
   );
 
-  //Состояние кнопки отправки кнопки
+  //Состояние кнопки отправки формы
   const [disable, setDisable] = useState(true);
 
   //Валидность формы
@@ -87,6 +87,7 @@ const Login = ({ setActive }) => {
 
   //Асинхронная функция для входа в кабинет
   async function logIn() {
+    //Если форма валидна, отправляем на сервер следующий объект
     if (formValid) {
       const data = {
         email: email,
@@ -100,7 +101,7 @@ const Login = ({ setActive }) => {
       loginUser(data)
         .then((res) => {
           if (res) {
-            //Заполнение данных о юзере
+            //Запись данных о юзере в стор
             dispatch(setUser(res));
             //Пользователь авторизован!
             dispatch(auth(true));

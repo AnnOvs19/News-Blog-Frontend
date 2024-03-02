@@ -33,6 +33,7 @@ const ProfileUser = (props) => {
   useEffect(() => {
     fethGetPostsUser(user.id)
       .then((res) => {
+        //Запись постов юзера в стор
         dispatch(setUserPosts(res.reverse()));
       })
       .catch((res) => alert(res.massage));
@@ -42,6 +43,7 @@ const ProfileUser = (props) => {
   useEffect(() => {
     if (id) {
       getPtofileUnknowUser(id)
+        //Запись в стор данных о стороннем пользователе
         .then((res) => dispatch(setUnknowUser(res)))
         .catch((res) => alert(res.massage));
     }

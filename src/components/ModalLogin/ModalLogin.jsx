@@ -18,14 +18,18 @@ const ModalLogin = ({ active, setActive }) => {
         <div className="head">
           <div className="head__login" onClick={() => setActiveTab(0)}>
             <h3
-              className={activeTab == 0 ? "base-title activeTab" : "base-title"}
+              className={
+                activeTab == 0 ? "base-title activeTabModal" : "base-title"
+              }
             >
               Sign in
             </h3>
           </div>
           <div className="head__register" onClick={() => setActiveTab(1)}>
             <h3
-              className={activeTab == 1 ? "base-title activeTab" : "base-title"}
+              className={
+                activeTab == 1 ? "base-title activeTabModal" : "base-title"
+              }
             >
               New account
             </h3>

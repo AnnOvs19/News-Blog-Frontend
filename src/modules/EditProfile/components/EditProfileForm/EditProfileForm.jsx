@@ -15,55 +15,50 @@ import avatarEmpty from "../../../../assets/images/backgroundAvatar.jpg";
 import "./editProfileForm.scss";
 
 const EditProfileForm = () => {
+  //Получаем данные юзера
   const user = useSelector(getUserData);
   const dispatch = useDispatch();
+  //Хук для навигации
   const nav = useNavigate();
 
+  //Состояние, в которое записывается файл для отображения на фронте
   const [avatar, setAvatar] = useState("");
+  //Состояние, в котором хранится файл для отправки на сервер
   const [imageUser, setImageUser] = useState("");
 
+  //Путь к изображению
   const pathAvatar = `http://localhost:6868/${user.avatar}`;
 
+  //Общие состояния для имени, емэйла и статуса
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [status, setStatus] = useState(user.status);
 
+  //Состояния, проверяющие коснулся юзер инпутов или нет
   const [nameDirty, setNameDirty] = useState(false);
   const [emailDirty, setEmailDirty] = useState(false);
   const [statusDirty, setStatusDirty] = useState(false);
 
+  //Состояния для отображения ошибок
   const [nameError, setNameError] = useState();
   const [emailError, setEmailError] = useState();
   const [statusError, setStatusError] = useState();
 
+  //Состояние кнопки
   const [disable, setDisable] = useState(false);
 
+  //Состояние валидности кнопки
   const [formValid, setFormValid] = useState(true);
 
-  async function submitForm(e) {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-
-    if (formValid) {
-      formData.append("id", user.id);
-
-      if (user.email != email) {
-        formData.append("email", email);
-      }
-
-      updateUser(formData).then((res) => {
-        dispatch(setUser(jwtDecode(res.token)));
-        nav("/profile");
-      });
-    }
-  }
-
+  //Запись выбранного изображения для передачи и отображения в профиле
   function handleAddAvatar({ target: { files } }) {
     const loadedImage = files[0];
+    //Передаём изображения с компьютера в браузер
     setAvatar(URL.createObjectURL(loadedImage));
     setImageUser(loadedImage);
   }
 
+  //Функции для валижации инпутов
   function nameHandler(e) {
     setName(e.target.value);
     if (e.target.value.length < 2) {
@@ -98,6 +93,7 @@ const EditProfileForm = () => {
     }
   }
 
+  //Функция которая срабатывает если пользователь коснулся интпутов и ничего не ввёл
   function blurHandler(e) {
     switch (e.target.name) {
       case "name":
@@ -114,6 +110,27 @@ const EditProfileForm = () => {
 
       default:
         break;
+    }
+  }
+
+  //Функция отправки формы
+  async function submitForm(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    if (formValid) {
+      //Добавляем в формдату поле с id юзера
+      formData.append("id", user.id);
+
+      //Если емэйл не похож на предыдущий емэйл юзера, добавляем его в формдату
+      if (user.email != email) {
+        formData.append("email", email);
+      }
+
+      updateUser(formData).then((res) => {
+        dispatch(setUser(jwtDecode(res.token)));
+        nav("/profile");
+      });
     }
   }
 

@@ -40,7 +40,7 @@ function App() {
       })
       .finally(() => setLoading(false));
 
-    //Получение категорий в "создании поста" после обновлеия
+    //Получение категорий в "создании поста" после обновлеия и запись их в стор
     fetchGetTypes().then((res) => {
       dispatch(loadTags(res));
     });
@@ -56,6 +56,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Account />} />
+          {/* ID получаем из хука useParams в компоненте ProfileUser */}
           <Route path="/profile/user/:id" element={<Account />} />
           <Route path="/profile/edit" element={<EditAccount />} />
           <Route path="/article" element={<Article />} />

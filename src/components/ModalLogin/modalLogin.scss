@@ -1,182 +1,168 @@
 .modalLogin {
-    height: 100vh;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.496);
-    position: fixed;
-    z-index: 120;
-    top: 0;
-    left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.496);
+  position: fixed;
+  z-index: 120;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s;
+  opacity: 0;
+  pointer-events: none;
+
+  &-content {
+    padding: 0 30px 40px 30px;
+    width: 35%;
+    background-color: white;
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: 0.5s;
-    opacity: 0;
-    pointer-events: none;
+    flex-direction: column;
 
-    &-content {
-        padding: 0 30px 40px 30px;
-        width: 35%;
-        background-color: white;
+    .head {
+      display: flex;
+      flex-direction: row;
+
+      &__login,
+      &__register {
+        margin: 30px;
+      }
+
+      h3 {
+        font-size: 25px;
+        cursor: pointer;
+        transition: 0.4s;
+
+        &:hover {
+          transform: scale(1.04);
+          transition: 0.4s;
+        }
+      }
+    }
+
+    .body {
+      &__login,
+      &__register {
         display: flex;
+        justify-content: center;
         align-items: center;
         flex-direction: column;
+        // gap: 15px;
 
-
-        .head {
-            display: flex;
-            flex-direction: row;
-
-            &__login,
-            &__register {
-                margin: 30px;
-            }
-
-            h3 {
-                font-size: 25px;
-                cursor: pointer;
-                transition: 0.4s;
-
-                &:hover {
-                    transform: scale(1.04);
-                    transition: 0.4s;
-                }
-            }
+        div {
+          margin-top: 15px;
         }
+      }
 
-        .body {
-
-            &__login,
-            &__register {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                // gap: 15px;
-
-                div {
-                    margin-top: 15px;
-                }
-
-
-            }
-
-            .modal-btn {
-                width: 100% !important;
-                margin-top: 30px;
-
-
-            }
-        }
-
+      .modal-btn {
+        width: 100% !important;
+        margin-top: 30px;
+      }
     }
+  }
 }
 
 .disable {
+  background-color: #ffd050b5;
+  color: #11121acb;
+
+  &:hover {
     background-color: #ffd050b5;
     color: #11121acb;
-
-    &:hover {
-        background-color: #ffd050b5;
-        color: #11121acb;
-    }
+  }
 }
 
-.activeTab {
-    color: #592EA9;
+.activeTabModal {
+  color: #592ea9 !important;
 }
 
 .activeModal {
-    opacity: 1;
-    pointer-events: all;
+  opacity: 1;
+  pointer-events: all;
 }
 
 @media (max-width: 1250px) {
-    .modalLogin {
-        &-content {
-            padding: 10px 30px 40px 30px;
-            width: 50%;
-        }
+  .modalLogin {
+    &-content {
+      padding: 10px 30px 40px 30px;
+      width: 50%;
     }
-
+  }
 }
 
 @media (max-width: 800px) {
-    .modalLogin {
-        &-content {
-            padding: 10px 30px 40px 30px;
-            width: 430px;
-        }
+  .modalLogin {
+    &-content {
+      padding: 10px 30px 40px 30px;
+      width: 430px;
     }
+  }
 }
 
 @media (max-width: 500px) {
-    .modalLogin {
-        &-content {
-            padding: 10px 20px 40px 20px;
-            width: 280px;
+  .modalLogin {
+    &-content {
+      padding: 10px 20px 40px 20px;
+      width: 280px;
 
-
-            .head {
-
-                &__login,
-                &__register {
-                    margin: 20px;
-                }
-
-                h3 {
-                    font-size: 20px;
-                }
-            }
-
-            .body {
-
-                &__login,
-                &__register {
-                    div {
-                        margin-top: 12px;
-                    }
-
-                    .error-span {
-                        margin-top: 5px;
-
-                        font-size: 11px;
-                    }
-                }
-
-                .modal-btn {
-                    width: 100% !important;
-                    margin-top: 25px;
-                    font-size: 15px;
-                    padding: 12px 22px;
-
-
-                }
-            }
+      .head {
+        &__login,
+        &__register {
+          margin: 20px;
         }
+
+        h3 {
+          font-size: 20px;
+        }
+      }
+
+      .body {
+        &__login,
+        &__register {
+          div {
+            margin-top: 12px;
+          }
+
+          .error-span {
+            margin-top: 5px;
+
+            font-size: 11px;
+          }
+        }
+
+        .modal-btn {
+          width: 100% !important;
+          margin-top: 25px;
+          font-size: 15px;
+          padding: 12px 22px;
+        }
+      }
     }
+  }
 }
 
 @media (max-width: 320px) {
-    .modalLogin {
-        &-content {
-            padding: 10px 30px 40px 30px;
-            width: 255px;
+  .modalLogin {
+    &-content {
+      padding: 10px 30px 40px 30px;
+      width: 255px;
 
+      .head {
+        margin-bottom: 8px;
+        display: flex;
+        gap: 8px;
 
-            .head {
-                margin-bottom: 8px;
-                display: flex;
-                gap: 8px;
-
-                &__login,
-                &__register {
-                    margin: 5px;
-                }
-
-                h3 {
-                    font-size: 18px;
-                }
-            }
+        &__login,
+        &__register {
+          margin: 5px;
         }
+
+        h3 {
+          font-size: 18px;
+        }
+      }
     }
+  }
 }

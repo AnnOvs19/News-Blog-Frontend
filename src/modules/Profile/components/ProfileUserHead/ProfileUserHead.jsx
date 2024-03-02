@@ -29,6 +29,7 @@ const ProfileUserHead = () => {
   //Записываем путь к аватару юзера/стороннего юзера
   const pathAvatar = `http://localhost:6868/${id ? unknowUser.avatar : user.avatar}`;
 
+  //Выход из аккаунта
   function logOut() {
     localStorage.clear();
     dispatch(setUser(null));

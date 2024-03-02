@@ -37,18 +37,18 @@ const NewsList = () => {
     setPageCount(Math.ceil(posts.length / itemPreventPage));
   }, [posts]);
 
+  //Отслеживание клика переключения страниц
+  function handlePageClick(event) {
+    const newOffset = (event.selected * itemPreventPage) % items.length;
+    setItemOffset(newOffset);
+  }
+
   //Рендер при переключении страниц
   useEffect(() => {
     const endOffset = itemOffset + itemPreventPage;
     setCurrentItems(posts.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(items.length / itemPreventPage));
   }, [itemOffset, itemPreventPage]);
-
-  //Отслеживание клика переключения страниц
-  function handlePageClick(event) {
-    const newOffset = (event.selected * itemPreventPage) % items.length;
-    setItemOffset(newOffset);
-  }
 
   return (
     <div className="newsList">
